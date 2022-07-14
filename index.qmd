@@ -1,7 +1,7 @@
 ---
 title: "COINS Lab Wiki"
 ---
-![](img/1500x500.jfif)
+![](/img/1500x500.jfif)
 
 
 Welcome to COINS Lab Wiki. COINS Lab Wiki was setup to consolidate all the tutorials, tools, and resources, that would be helpful for both current & future members and collaborators, at one place. 
