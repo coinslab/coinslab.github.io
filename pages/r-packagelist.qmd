@@ -1,0 +1,25 @@
+---
+title-block-style: plain
+title: R Packages & Related Learning Resources 
+--- 
+
+An extensive list of R software for psychometric modeling can be found [here](https://cran.r-project.org/web/views/Psychometrics.html). 
+
+### Cognitive Diagnsotic Modeling 
+ - [CDM](https://alexanderrobitzsch.github.io/CDM/index.html) [Package Home Page]
+    - *[Tutorial Paper]* [Ravand, H., & Robitzsch, A. (2015). Cognitive diagnostic modeling using R. Practical Assessment, Research, and Evaluation, 20(1), 11.](https://scholarworks.umass.edu/pare/vol20/iss1/11/)
+    - *[Tutorial Paper]* [George, A. C., & Robitzsch, A. (2015). Cognitive diagnosis models in R: A didactic. The Quantitative Methods for Psychology, 11(3), 189-205.](https://www.researchgate.net/publication/283496274_Cognitive_Diagnosis_Models_in_R_A_Didactic)
+ - [GDINA](https://wenchao-ma.github.io/GDINA/index.html) [Package Home Page]
+    - *[Tutorial Paper]* [Ma, W., & de la Torre, J. (2020). GDINA: An R package for cognitive diagnosis modeling. Journal of Statistical Software, 93, 1-26.](https://www.jstatsoft.org/article/view/v093i14)
+
+*[A Comparison of Software Packages Available for DINA]* [Sen, S., & Terzi, R. (2020). A comparison of software packages available for DINA model estimation. Applied Psychological Measurement, 44(2), 150-164.](https://journals.sagepub.com/doi/full/10.1177/0146621619843822?casa_token=ILabkyt3h-0AAAAA%3AZwQdkHYCkqiMF92SCC6scShP7drNAsLLio7vPPLzP70AmCdDno4Ig7UJBeIe7eP7lUFRz_icKQ)
+
+*[Tutorial Paper on implementing CDMs using probablisitic programming in R]* [Zhan, P., Jiao, H., Man, K., & Wang, L. (2019). Using JAGS for Bayesian cognitive diagnosis modeling: A tutorial. Journal of Educational and Behavioral Statistics, 44(4), 473-503.](https://journals.sagepub.com/doi/full/10.3102/1076998619826040)
+
+
+### Bayesian Networks in Educational Assessment. 
+
+A general documentation on bayesian networks in educational assessment can be found [here](https://cran.r-project.org/web/views/Psychometrics.html).
+
+- [RNetica](https://github.com/ralmond/RNetica/) [Package Home Page]
+- [CPTtools](https://github.com/ralmond/CPTtools) [Package Home Page]

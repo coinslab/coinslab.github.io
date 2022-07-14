@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  sidebar:
+    alignment: center
+    logo: img/COINSLab.jpg
+    style: "floating"
+    tools:
+      - icon: github
+        href: https://github.com/coinslab
+      - icon: house
+        href: https://labs.utdallas.edu/coinslab
+      - icon: youtube
+        href: https://www.youtube.com/channel/UCBHPye1o725VKT1EQJczGrg/featured
+    search: true
+    background: white
+    border: true
+  
+    contents:
+      - href: index.qmd
+        text: Home
+      - contents.qmd
+  page-footer: "COINS Lab © 2018 - 2022"
+format:
+  html:
+    theme: materia
+    background: black 
+    css: styles.css
+    toc: true
+
+

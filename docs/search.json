@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "contents.html",
+    "href": "contents.html",
+    "title": "Contents",
+    "section": "",
+    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\n\n\n\n\n\nList of R Packages used in the Lab"
+  },
+  {
+    "objectID": "contents.html#books",
+    "href": "contents.html#books",
+    "title": "Contents",
+    "section": "Books",
+    "text": "Books\n\n[Recomended Books in Cognitive Diagnostic Modeling]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "COINS Lab Wiki",
+    "section": "",
+    "text": "Welcome to COINS Lab Wiki. COINS Lab Wiki was setup to consolidate all the tutorials, tools, and resources, that would be helpful for both current & future members and collaborators, at one place.\nThis wiki was initially set up on February 18, 2022 by Athul Sudheesh using Franklin.jl (A Julia based static site generator). This was later moved to Quarto (A more advanced and easier open-source scientific & publishing system) on July 14, 2022.\n\nContributing to this Wiki\nIf you want to direclty contribute to this wiki, you need to familiaze yourself with how to use the Quarto publishing system and the synatx for makrdown files. The documentation for Quarto can be found here and markdown syntax here.\n\n\nWorking with Github\n\nFirst time users\n\nSetup your GitHub account (if you already haven’t) and share your GitHub ID with the Principal Investigator or one of the senior PhD students in the lab. Inform them of your interest in contributing to the lab wiki. Either the PI or one of the senior PhD students will add you to the wiki repository as a contributor.\nInstall Github Desktop and link it with your Github profile.\nGo to https://github.com/coinslab/coinslab.github.io and click on Code -> Open with Github Desktop\n\n[Insert screenshot here]\nThis should create a clone of the Knowledge-Base repository in your local machine.\n\nNow you can go to the file location in your computer where you have cloned the coinslab.github.io repository.\nYou can create contents for this site as a Quarto Markdown file(.qmd) inside the pages folder in coinslab.github.io. You can use VS Code to create and edit the .qmd files.\nOnce you are done with writing/updating your section, you can commit your changes and push the changes to the Github using your Github Desktop client. Now inform the Senior Investigator who is in charge of this site. He/She will build and publish the updates\n\n\n\nExperienced users\n\nIf you are not contributing for the first time, always fetch from the cloud and make sure everything is in-sync with the cloud, before beginning to work on the documentation."
+  },
+  {
+    "objectID": "pages/julia-getting-started.html",
+    "href": "pages/julia-getting-started.html",
+    "title": "Getting Started in Julia",
+    "section": "",
+    "text": "(If you are new to programming)\n\nJulia Installation & Setup (Part of Introduction to Julia Machine Learning book)\n\n\n\n\n(If you are proficient in Python/MATLAB/R)\n\n[Cheatsheet] Comparison of basic statistics/linear algebra in Python/Julia/MATLAB\n[Official Documentation] Julia’s noteworthy differences from other languages\n[MIT Opencourseware] Introduction to Computational Thinking\n\n\n\n\n(If you have developed APIs and software in other languages)\n\n[Book] Kwong, T. (2020). Hands-On Design Patterns and Best Practices with Julia: Proven solutions to common problems in software design for Julia 1. x. Packt Publishing Ltd.\n[Book] Balbaert, I., Sengupta, A., & Sherrington, M. (2016). Julia: High Performance Programming. Packt Publishing Ltd."
+  },
+  {
+    "objectID": "pages/julia-getting-started.html#packages-for-computational-modeling",
+    "href": "pages/julia-getting-started.html#packages-for-computational-modeling",
+    "title": "Getting Started in Julia",
+    "section": "Packages for Computational Modeling",
+    "text": "Packages for Computational Modeling\nYou can search through the list of all registered julia package here.\n\nList of packages for basic modeling (Linear Models, Clustering, Hypothesis Testing, etc.)\nMainstream Machine Learning\n\nScikitLearn.jl\n\n[Learning Resource] Sudheesh, A. (2022). Introduction to Julia Machine Learning\n\nMLJ.jl\n\nNeural Networks\n\nFlux.jl\n\nList of packages for all sorts of optimization\nDifferential Equations based Modeling\n\nDynamicalSystems.jl\nDiffEq.jl\n\nBayesian Inference & Probabilistic Programming\n\nTuring.jl\n\nProbablistic Graphical Models\n\nBayesNet.jl\nJunctionTrees.jl\nMarkov Decision Process POMDPs.jl"
+  },
+  {
+    "objectID": "pages/r-packagelist.html",
+    "href": "pages/r-packagelist.html",
+    "title": "R Packages & Related Learning Resources",
+    "section": "",
+    "text": "Cognitive Diagnsotic Modeling\n\nCDM [Package Home Page]\n\n[Tutorial Paper] Ravand, H., & Robitzsch, A. (2015). Cognitive diagnostic modeling using R. Practical Assessment, Research, and Evaluation, 20(1), 11.\n[Tutorial Paper] George, A. C., & Robitzsch, A. (2015). Cognitive diagnosis models in R: A didactic. The Quantitative Methods for Psychology, 11(3), 189-205.\n\nGDINA [Package Home Page]\n\n[Tutorial Paper] Ma, W., & de la Torre, J. (2020). GDINA: An R package for cognitive diagnosis modeling. Journal of Statistical Software, 93, 1-26.\n\n\n[A Comparison of Software Packages Available for DINA] Sen, S., & Terzi, R. (2020). A comparison of software packages available for DINA model estimation. Applied Psychological Measurement, 44(2), 150-164.\n[Tutorial Paper on implementing CDMs using probablisitic programming in R] Zhan, P., Jiao, H., Man, K., & Wang, L. (2019). Using JAGS for Bayesian cognitive diagnosis modeling: A tutorial. Journal of Educational and Behavioral Statistics, 44(4), 473-503.\n\n\nBayesian Networks in Educational Assessment.\nA general documentation on bayesian networks in educational assessment can be found here.\n\nRNetica [Package Home Page]\nCPTtools [Package Home Page]"
+  }
+]

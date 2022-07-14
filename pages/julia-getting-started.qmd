@@ -1,0 +1,45 @@
+---
+title: Getting Started in Julia 
+---
+
+## Resources for 
+### Beginners 
+*(If you are new to programming)*
+
+- [Julia Installation & Setup](https://athulsudheesh.github.io/IJML/hellojulia.html) *(Part of Introduction to Julia Machine Learning book)*
+
+### Intermediate Programmers 
+*(If you are proficient in Python/MATLAB/R)*
+
+- [Cheatsheet] [Comparison of basic statistics/linear algebra in Python/Julia/MATLAB](https://cheatsheets.quantecon.org/)
+- [Official Documentation] [Julia's noteworthy differences from other languages](https://docs.julialang.org/en/v1/manual/noteworthy-differences/)
+- [MIT Opencourseware] [Introduction to Computational Thinking](https://computationalthinking.mit.edu/Spring21/)
+
+### Advanced Programmers
+*(If you have developed APIs and software in other languages)*
+
+- [Book] [Kwong, T. (2020). Hands-On Design Patterns and Best Practices with Julia: Proven solutions to common problems in software design for Julia 1. x. Packt Publishing Ltd.](https://www.amazon.com/Hands-Design-Patterns-Julia-comprehensive/dp/183864881X)
+
+- [Book] [Balbaert, I., Sengupta, A., & Sherrington, M. (2016). Julia: High Performance Programming. Packt Publishing Ltd.](https://juliahighperformance.com/)
+
+## Packages for Computational Modeling
+
+You can search through the list of all registered julia package [here](https://juliahub.com/ui/Packages). 
+
+- [List of packages for basic modeling (Linear Models, Clustering, Hypothesis Testing, etc.)](https://juliastats.org/)
+- Mainstream Machine Learning 
+    - [ScikitLearn.jl](https://cstjean.github.io/ScikitLearn.jl/dev/)
+        - [Learning Resource] [Sudheesh, A. (2022). Introduction to Julia Machine Learning](https://athulsudheesh.github.io/IJML/)
+    - [MLJ.jl](https://alan-turing-institute.github.io/MLJ.jl/dev/list_of_supported_models/)
+- Neural Networks 
+    - [Flux.jl](https://fluxml.ai/)
+- [List of packages for all sorts of optimization](https://www.juliaopt.org/packages/)
+- Differential Equations based Modeling
+    - [DynamicalSystems.jl](https://juliadynamics.github.io/DynamicalSystems.jl/latest/)
+    - [DiffEq.jl](https://diffeq.sciml.ai/stable/)
+- Bayesian Inference & Probabilistic Programming
+    - [Turing.jl](https://turing.ml/dev/) 
+- Probablistic Graphical Models 
+    - [BayesNet.jl](https://sisl.github.io/BayesNets.jl/dev/index.html)
+    - [JunctionTrees.jl](https://mroavi.github.io/JunctionTrees.jl/stable/)
+    - Markov Decision Process [POMDPs.jl](https://github.com/JuliaPOMDP/POMDPs.jl)

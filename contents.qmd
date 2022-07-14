@@ -1,0 +1,20 @@
+---
+title: "Contents"
+---
+
+## Software 
+:::{.callout-note}
+For the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there's been a combined effort to use Julia for new projects in the lab - for it's promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI's previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future. 
+:::
+
+
+### Julia 
+
+- [Getting Started in Julia](/pages/julia-getting-started.qmd)
+
+### R
+
+- [List of R Packages used in the Lab](/pages/r-packagelist.qmd) 
+
+## Books 
+ - [Recomended Books in Cognitive Diagnostic Modeling]
