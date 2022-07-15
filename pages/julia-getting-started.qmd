@@ -15,6 +15,8 @@ title: Getting Started in Julia
 - [Official Documentation] [Julia's noteworthy differences from other languages](https://docs.julialang.org/en/v1/manual/noteworthy-differences/)
 - [MIT Opencourseware] [Introduction to Computational Thinking](https://computationalthinking.mit.edu/Spring21/)
 
+- [Online Book & Lectures] [Introduction to Parallel Computing and Scientific Machine Learning](https://book.sciml.ai/)
+
 ### Advanced Programmers
 *(If you have developed APIs and software in other languages)*
 
