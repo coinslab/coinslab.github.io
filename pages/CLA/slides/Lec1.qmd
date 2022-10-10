@@ -9,6 +9,7 @@ format:
         theme: simple
         history: false
         highlight-style: github
+        chalkboard: true
         title-slide-attributes: 
                   data-background-image: "images/title_500.gif"
                   data-background-size: 500px
