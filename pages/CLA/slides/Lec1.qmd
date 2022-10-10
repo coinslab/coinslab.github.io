@@ -1,0 +1,263 @@
+---
+title: "Computational Linear Algebra"
+author: "Athul Sudheesh"
+date: Fall 2022
+controls: true
+controls-layout: bottom-right
+format: 
+    revealjs:
+        theme: simple
+        history: false
+        highlight-style: breezedark
+        title-slide-attributes: 
+                  data-background-image: "images/title_500.gif"
+                  data-background-size: 500px
+                  data-background-position: "bottom right"
+                  data-background-color: "#000000" 
+execute:
+  freeze: true
+  daemon: 600000
+jupyter: julia-1.8
+---
+
+## Before we start...
+
+- Create dedicated project environments for different projects 
+
+- Activate your project environment before you start working
+```{julia}
+#| echo: true
+#| output: false
+#| warning: false
+using Pkg
+Pkg.activate(".")
+```
+```{julia}
+#| warning: false
+Pkg.instantiate();
+```
+- To add a package:
+```{julia}
+#| echo: true
+#| eval: false
+using Pkg
+Pkg.add("PkgName")
+```
+
+## <span style="color:#020686">Matrices</span> are everywhere 
+
+![](images/Matrix-excel.jpg){.absolute top=100 left=700 width="200px" height="200px" fig-alt="Excel"}
+
+::: {.absolute top="310px" left="750"}
+::: {style="font-size: 0.45em"}
+Tabular Data
+:::
+:::
+
+::: {.absolute top="310px" left="200"}
+::: {style="font-size: 0.45em"}
+Images
+:::
+:::
+
+![](images/images-matrix.png){.absolute top=100 right=100 left=10 width="450px" height="200px"}
+
+::: {.absolute top="610px" left="165"}
+::: {style="font-size: 0.45em"}
+Graph Models
+:::
+:::
+![](images/graphs.png){.absolute top=400 right=100 left=10 width="450px" height="200px"}
+
+
+![](images/HMM.jpeg){.absolute top=400 right=100 left=500 width="450px" height="200px"}
+
+::: {.absolute top="610px" left="720"}
+::: {style="font-size: 0.45em"}
+Markov Chains
+:::
+:::
+
+## Images as Matrices
+### Loading Images 
+
+```{julia}
+#| echo: true 
+# Packages for handling images 
+using Images, ImageIO, ImageMagick 
+# First time installation of Images package 
+# could take couple of minutes.
+```
+
+- Defining path to files 
+
+```{julia}
+#| echo: true 
+#| output: false 
+cat = joinpath(pwd(),"images", "cat.1.jpg")
+```
+
+- Loading the image
+
+```{julia}
+#| echo: true 
+catimg = load(cat)
+```
+
+## Images as Matrices {.smaller}
+### Images are Multidimensional Matrices 
+
+- [Height x Width] x Color
+```{julia}
+#| echo: true 
+m,n = size(catimg)
+```
+
+```{julia}
+#| echo: true
+#| eval: false
+r = RGB.(red.(catimg), zeros(m,n), zeros(m,n))
+g = RGB.(zeros(m,n), green.(catimg), zeros(m,n))
+b = RGB.(zeros(m,n), zeros(m,n), blue.(catimg))
+```
+
+:::: {.columns}
+
+::: {.column width="33.33%"}
+```{julia}
+r = RGB.(red.(catimg), zeros(m,n), zeros(m,n))
+```
+:::
+
+::: {.column width="33.33%"}
+```{julia}
+g = RGB.(zeros(m,n), green.(catimg), zeros(m,n))
+```
+:::
+
+::: {.column width="33.33%"}
+```{julia}
+b = RGB.(zeros(m,n), zeros(m,n), blue.(catimg))
+```
+:::
+::::
+
+## Images as Matrices {.smaller .scrollable}
+### Images are Multidimensional Matrices 
+
+```{julia}
+#| echo: true 
+r .+ b .+ g 
+```
+
+- Many a times we do machine learning after turning images into GrayScale 
+```{julia}
+#| echo: true 
+Gray.(catimg)
+```
+
+## Images as Matrices {.smaller .scrollable}
+### Images are Multidimensional Matrices 
+
+```{julia}
+#| echo: true
+Float64.(Gray.(catimg))
+```
+
+## Image compression using SVD
+
+```{julia}
+#| echo: true 
+using LinearAlgebra 
+U,S,V = svd(Float64.(Gray.(catimg)));
+```
+- Reconstructing the image using the singular values 
+```{julia}
+#| echo: true
+RGB.(U*diagm(S)*V')
+```
+
+
+## Image compression using SVD
+
+```{julia}
+#| echo: true 
+function compressimg(n)
+    RGB.(U[:,1:n]*diagm(S[1:n])*V[:,1:n]')
+end
+```
+
+```{julia}
+#| echo: true 
+compressimg(10)
+```
+
+Example 4.2.3 (page 110)
+
+## What's the optimal number of features?
+
+```{julia}
+#| echo: true 
+#| fig-align: center
+using GRUtils 
+SNorm = S ./norm(S)
+plot(1:length(S),SNorm, title="Scree Plot", 
+        xlabel = "Singular Value IDs",
+        ylabel = "Singular Values", grid=false)
+```
+
+## SVD as recoding strategy (Image Example) {.smaller}
+
+```{julia}
+#| echo: true 
+using Glob # For reading multiple files in a folder 
+using Pipe: @pipe
+function recodeimage(pathtoimage)
+    # The following code block looks for .jpg/.JPG/.png/.PNG files and create a list of them 
+    imagelist = glob("*.jpg", pathtoimage)  
+    append!(imagelist,  glob("*.JPG", pathtoimage))
+    append!(imagelist,  glob("*.png", pathtoimage)) 
+    append!(imagelist,  glob("*.PNG", pathtoimage))
+
+
+    # Algorithm for scree plot ===================================================================================
+    # creating a temporary array of arrays to hold the numerical values of the grayscaled images 
+    # temp[1] will have the grayscaled information of image 1, and so on...
+    temp = Array{Array{Float64,2},1}(undef,length(imagelist))
+    
+    # @showprogress is a macro to print the progress of this loop when this function is run 
+        for i in 1:length(imagelist)
+        temp[i] = Float64.(Gray.(imresize(load(imagelist[i]),128,128))) 
+        # @pipe is a macro for chaining multiple tasks
+        # the next two blocks of code takes the image, converts it into grayscale and compute 
+        # the singular values, then only the first n_singular values are stored in the recodedArray    
+        #img_singluar = @pipe X |> Float64.(Gray.(_)) |> svdvals(_)[1:n_singularvlas]' 
+        #recodedArray = vcat(recodedArray, img_singluar) 
+    end
+    
+    # stacking individual images to create a giant image matrix 
+    stackedX = vcat(temp...)
+    println("Running Singular Value Decomposition...")
+    U,S,V= svd(stackedX)
+    S = S ./norm(S)
+    screeplot(S)
+    # ============================================================================================================
+    
+    # After examining the scree plot, the user decides the no. of singular values 
+    n_singularvlas = input("No. of Features (due to bug in the code that reads user inputs, you might have to enter the no twice, if the program didn't run first time)")
+    
+    # Initializing an empty array to store the n_singular values of the images 
+    recodedArray = Array{Float64}(undef, 0, n_singularvlas) 
+    # computing singular values using only the first n_singulars 
+    for imagearrays in temp
+        img_singular = @pipe imagearrays |> svdvals(_)[1:n_singularvlas]'
+        recodedArray = vcat(recodedArray, img_singular)
+    end
+
+    # Normalizing the singular values 
+    recodedArray =  eachcol(recodedArray) ./ norm.(eachcol(recodedArray))
+    # writing the array as a .csv file 
+    filename = joinpath(pathtoimage, "image_recoded.csv")
+    CSV.write(filename,  DataFrame(recodedArray, :auto), writeheader=true)
+end
+```
