@@ -1,0 +1,55 @@
+---
+title: Julia Setup via `juliaup`
+format:
+  html:
+    code-overflow: wrap
+    number-sections: true
+---
+
+
+## Windows Users 
+
+1. Go to Microsoft App store and Install [Julia App](https://apps.microsoft.com/store/detail/julia/9NJNWW8PVKMN?hl=en-us&gl=us&rtc=1).
+
+2. Download and Install [VS Code](https://code.visualstudio.com/).
+3. Install the Julia VS Code Extension.
+![](/pages/img/Screenshot%202023-01-09%20at%201.05.46%20PM.png) 
+
+4. After installation, the "install button" will turn into a gear icon. Once you click on the gear icon, a dropdown menu will popup. From that list, choose `Extension Settings`. 
+5. Without unselecting the text on the extension search bar, type `exe`. Make sure the `Julia: Executable Path` field is completely blank.
+![](/pages/img/Screenshot%202023-01-09%20at%201.19.10%20PM.png)
+
+6. To start a Julia session inside VS Code, press `Ctrl` + `Shift` + `P`. From the dropdown list, choose `Julia: Start REPL`
+
+7. If you want to start Julia REPL without VS Code, you go to your command line and type `julia` and hit enter.
+
+### Understanding`Juliaup` {#sec-juliaup}
+
+`Juliaup` is a Julia version manager and is automatically installed when you install the Julia App from Microsoft App Store. `Juliaup` lets you add, update, and remove different Julia versions very easily.
+
+**To use `juliaup`, you open your command line and type `juliaup` and the command you want to run.**
+
+- `juliaup status` prints all the julia version installed in your PC.
+- `juliaup add release` installed the latest stable version of Julia.
+- `juliaup add 1.8.3` will install Julia 1.8.3.
+    - To see the list of available julia version, run `juliaup list`
+- `juliaup default 1.8.3` sets the default version of Julia in your PC as Julia 1.8.3. This also defines what version of Julia will be 
+called while you start a Julia session in VS Code. 
+- `juliaup remove 1.8.3` will remove Julia 1.8.3 from your PC. 
+
+## Mac User
+1. Install homebrew package manager for Mac 
+
+To install homebrew, you can copy-past and run the below code on your terminal:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. Install `Juliaup` via homebrew
+
+Run the following code in your terminal:
+```bash
+brew install juliaup
+```
+
+3. Follow instructions in @sec-juliaup to install/remove a particular version of Julia.

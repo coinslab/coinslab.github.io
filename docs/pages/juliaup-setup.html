@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Getting Started in Julia</title>
+<title>Julia Setup via juliaup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -69,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Getting Started in Julia</h1>
+      <h1 class="quarto-secondary-nav-title">Julia Setup via <code>juliaup</code></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -116,13 +179,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#resources-for" id="toc-resources-for" class="nav-link active" data-scroll-target="#resources-for">Resources for</a>
+  <li><a href="#windows-users" id="toc-windows-users" class="nav-link active" data-scroll-target="#windows-users"><span class="toc-section-number">1</span>  Windows Users</a>
   <ul class="collapse">
-  <li><a href="#beginners" id="toc-beginners" class="nav-link" data-scroll-target="#beginners">Beginners</a></li>
-  <li><a href="#intermediate-programmers" id="toc-intermediate-programmers" class="nav-link" data-scroll-target="#intermediate-programmers">Intermediate Programmers</a></li>
-  <li><a href="#advanced-programmers" id="toc-advanced-programmers" class="nav-link" data-scroll-target="#advanced-programmers">Advanced Programmers</a></li>
+  <li><a href="#sec-juliaup" id="toc-sec-juliaup" class="nav-link" data-scroll-target="#sec-juliaup"><span class="toc-section-number">1.1</span>  Understanding<code>Juliaup</code></a></li>
   </ul></li>
-  <li><a href="#packages-for-computational-modeling" id="toc-packages-for-computational-modeling" class="nav-link" data-scroll-target="#packages-for-computational-modeling">Packages for Computational Modeling</a></li>
+  <li><a href="#mac-user" id="toc-mac-user" class="nav-link" data-scroll-target="#mac-user"><span class="toc-section-number">2</span>  Mac User</a></li>
   </ul>
 </nav>
     </div>
@@ -131,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Getting Started in Julia</h1>
+<h1 class="title d-none d-lg-block">Julia Setup via <code>juliaup</code></h1>
 </div>
 
 
@@ -146,68 +207,48 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="resources-for" class="level2">
-<h2 class="anchored" data-anchor-id="resources-for">Resources for</h2>
-<section id="beginners" class="level3">
-<h3 class="anchored" data-anchor-id="beginners">Beginners</h3>
-<p><em>(If you are new to programming)</em></p>
+<section id="windows-users" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="windows-users"><span class="header-section-number">1</span> Windows Users</h2>
+<ol type="1">
+<li><p>Go to Microsoft App store and Install <a href="https://apps.microsoft.com/store/detail/julia/9NJNWW8PVKMN?hl=en-us&amp;gl=us&amp;rtc=1">Julia App</a>.</p></li>
+<li><p>Download and Install <a href="https://code.visualstudio.com/">VS Code</a>.</p></li>
+<li><p>Install the Julia VS Code Extension. <img src="../pages/img/Screenshot 2023-01-09 at 1.05.46 PM.png" class="img-fluid"></p></li>
+<li><p>After installation, the “install button” will turn into a gear icon. Once you click on the gear icon, a dropdown menu will popup. From that list, choose <code>Extension Settings</code>.</p></li>
+<li><p>Without unselecting the text on the extension search bar, type <code>exe</code>. Make sure the <code>Julia: Executable Path</code> field is completely blank. <img src="../pages/img/Screenshot 2023-01-09 at 1.19.10 PM.png" class="img-fluid"></p></li>
+<li><p>To start a Julia session inside VS Code, press <code>Ctrl</code> + <code>Shift</code> + <code>P</code>. From the dropdown list, choose <code>Julia: Start REPL</code></p></li>
+<li><p>If you want to start Julia REPL without VS Code, you go to your command line and type <code>julia</code> and hit enter.</p></li>
+</ol>
+<section id="sec-juliaup" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="sec-juliaup"><span class="header-section-number">1.1</span> Understanding<code>Juliaup</code></h3>
+<p><code>Juliaup</code> is a Julia version manager and is automatically installed when you install the Julia App from Microsoft App Store. <code>Juliaup</code> lets you add, update, and remove different Julia versions very easily.</p>
+<p><strong>To use <code>juliaup</code>, you open your command line and type <code>juliaup</code> and the command you want to run.</strong></p>
 <ul>
-<li><a href="https://athulsudheesh.github.io/IJML/hellojulia.html">Julia Installation &amp; Setup</a> <em>(Part of Introduction to Julia Machine Learning book)</em></li>
+<li><code>juliaup status</code> prints all the julia version installed in your PC.</li>
+<li><code>juliaup add release</code> installed the latest stable version of Julia.</li>
+<li><code>juliaup add 1.8.3</code> will install Julia 1.8.3.
+<ul>
+<li>To see the list of available julia version, run <code>juliaup list</code></li>
+</ul></li>
+<li><code>juliaup default 1.8.3</code> sets the default version of Julia in your PC as Julia 1.8.3. This also defines what version of Julia will be called while you start a Julia session in VS Code.</li>
+<li><code>juliaup remove 1.8.3</code> will remove Julia 1.8.3 from your PC.</li>
 </ul>
 </section>
-<section id="intermediate-programmers" class="level3">
-<h3 class="anchored" data-anchor-id="intermediate-programmers">Intermediate Programmers</h3>
-<p><em>(If you are proficient in Python/MATLAB/R)</em></p>
-<ul>
-<li><p>[Cheatsheet] <a href="https://cheatsheets.quantecon.org/">Comparison of basic statistics/linear algebra in Python/Julia/MATLAB</a></p></li>
-<li><p>[Official Documentation] <a href="https://docs.julialang.org/en/v1/manual/noteworthy-differences/">Julia’s noteworthy differences from other languages</a></p></li>
-<li><p>[MIT Opencourseware] <a href="https://computationalthinking.mit.edu/Spring21/">Introduction to Computational Thinking</a></p></li>
-<li><p>[Online Book &amp; Lectures] <a href="https://book.sciml.ai/">Introduction to Parallel Computing and Scientific Machine Learning</a></p></li>
-</ul>
 </section>
-<section id="advanced-programmers" class="level3">
-<h3 class="anchored" data-anchor-id="advanced-programmers">Advanced Programmers</h3>
-<p><em>(If you have developed APIs and software in other languages)</em></p>
-<ul>
-<li><p>[Book] <a href="https://www.amazon.com/Hands-Design-Patterns-Julia-comprehensive/dp/183864881X">Kwong, T. (2020). Hands-On Design Patterns and Best Practices with Julia: Proven solutions to common problems in software design for Julia 1. x. Packt Publishing Ltd.</a></p></li>
-<li><p>[Book] <a href="https://juliahighperformance.com/">Balbaert, I., Sengupta, A., &amp; Sherrington, M. (2016). Julia: High Performance Programming. Packt Publishing Ltd.</a></p></li>
-</ul>
-</section>
-</section>
-<section id="packages-for-computational-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="packages-for-computational-modeling">Packages for Computational Modeling</h2>
-<p>You can search through the list of all registered julia package <a href="https://juliahub.com/ui/Packages">here</a>.</p>
-<ul>
-<li><a href="https://juliastats.org/">List of packages for basic modeling (Linear Models, Clustering, Hypothesis Testing, etc.)</a></li>
-<li>Mainstream Machine Learning
-<ul>
-<li><a href="https://cstjean.github.io/ScikitLearn.jl/dev/">ScikitLearn.jl</a>
-<ul>
-<li>[Learning Resource] <a href="https://athulsudheesh.github.io/IJML/">Sudheesh, A. (2022). Introduction to Julia Machine Learning</a></li>
-</ul></li>
-<li><a href="https://alan-turing-institute.github.io/MLJ.jl/dev/list_of_supported_models/">MLJ.jl</a></li>
-</ul></li>
-<li>Neural Networks
-<ul>
-<li><a href="https://fluxml.ai/">Flux.jl</a></li>
-</ul></li>
-<li><a href="https://www.juliaopt.org/packages/">List of packages for all sorts of optimization</a></li>
-<li>Differential Equations based Modeling
-<ul>
-<li><a href="https://juliadynamics.github.io/DynamicalSystems.jl/latest/">DynamicalSystems.jl</a></li>
-<li><a href="https://diffeq.sciml.ai/stable/">DiffEq.jl</a></li>
-</ul></li>
-<li>Bayesian Inference &amp; Probabilistic Programming
-<ul>
-<li><a href="https://turing.ml/dev/">Turing.jl</a></li>
-</ul></li>
-<li>Probablistic Graphical Models
-<ul>
-<li><a href="https://sisl.github.io/BayesNets.jl/dev/index.html">BayesNet.jl</a></li>
-<li><a href="https://mroavi.github.io/JunctionTrees.jl/stable/">JunctionTrees.jl</a></li>
-<li>Markov Decision Process <a href="https://github.com/JuliaPOMDP/POMDPs.jl">POMDPs.jl</a></li>
-</ul></li>
-</ul>
+<section id="mac-user" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="mac-user"><span class="header-section-number">2</span> Mac User</h2>
+<ol type="1">
+<li>Install homebrew package manager for Mac</li>
+</ol>
+<p>To install homebrew, you can copy-past and run the below code on your terminal:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Install <code>Juliaup</code> via homebrew</li>
+</ol>
+<p>Run the following code in your terminal:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install juliaup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Follow instructions in <a href="#sec-juliaup">Section&nbsp;1.1</a> to install/remove a particular version of Julia.</li>
+</ol>
 
 
 </section>

@@ -11,6 +11,7 @@ For the past several decades, the primary languge used in the lab was MATLAB. St
 ### Julia 
 
 - [Getting Started in Julia](/pages/julia-getting-started.qmd)
+- [Setting up Julia via `juliaup`](/pages/juliaup-setup.qmd)
 
 ### Slides from Julia Office Hours 
  - [Linear Algebra - SVD (10/10/2022)](/pages/CLA/slides/Lec1.qmd) 
