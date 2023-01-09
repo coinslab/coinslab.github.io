@@ -21,5 +21,20 @@ An extensive list of R software for psychometric modeling can be found [here](ht
 
 A general documentation on bayesian networks in educational assessment can be found [here](https://cran.r-project.org/web/views/Psychometrics.html).
 
-- [RNetica](https://github.com/ralmond/RNetica/) [Package Home Page]
+- [bnlearn](https://www.bnlearn.com) [Package Home Page]
 - [CPTtools](https://github.com/ralmond/CPTtools) [Package Home Page]
+- [bayesvl](https://github.com/sshpa/bayesvl) for parameterized bayesian networks 
+
+#### Bayesian Networks Book Recommendations 
+
+- [Scutari, M., & Denis, J. B. (2021). Bayesian networks: with examples in R. Chapman and Hall/CRC.](https://www.routledge.com/Bayesian-Networks-With-Examples-in-R/Scutari-Denis/p/book/9780367366513)
+- [Almond, R. G., Mislevy, R. J., Steinberg, L. S., Yan, D., & Williamson, D. M. (2015). 
+Bayesian networks in educational assessment. Springer.](https://link.springer.com/book/10.1007/978-1-4939-2125-6)
+
+### Bayesian Inference & Probablisitic Programming 
+- [CmdStanR](https://mc-stan.org/cmdstanr/)
+- [bayesvl](https://github.com/sshpa/bayesvl)
+
+#### Bayesian Inference Book Recommendations 
+- [McElreath, R. (2020). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.](https://xcelab.net/rm/statistical-rethinking/)
+- [Gelman, A., Carlin, J. B., Stern, H. S., & Rubin, D. B. (1995). Bayesian data analysis. Chapman and Hall/CRC.](http://www.stat.columbia.edu/~gelman/book/)
