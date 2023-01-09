@@ -11,7 +11,14 @@
     "href": "contents.html#books",
     "title": "Contents",
     "section": "Books",
-    "text": "Books\n\n[Recomended Books in Cognitive Diagnostic Modeling]"
+    "text": "Books\n\nBayesian Inference\n\nMcElreath, R. (2020). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.\nGelman, A., Carlin, J. B., Stern, H. S., & Rubin, D. B. (1995). Bayesian data analysis. Chapman and Hall/CRC."
+  },
+  {
+    "objectID": "contents.html#bayesian-networks",
+    "href": "contents.html#bayesian-networks",
+    "title": "Contents",
+    "section": "Bayesian Networks",
+    "text": "Bayesian Networks\n\nAlmond, R. G., Mislevy, R. J., Steinberg, L. S., Yan, D., & Williamson, D. M. (2015). Bayesian networks in educational assessment. Springer.\nScutari, M., & Denis, J. B. (2021). Bayesian networks: with examples in R. Chapman and Hall/CRC."
   },
   {
     "objectID": "index.html",
