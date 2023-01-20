@@ -15,6 +15,7 @@ For the past several decades, the primary languge used in the lab was MATLAB. St
 
 ### Slides from Julia Office Hours 
  - [Linear Algebra - SVD (10/10/2022)](/pages/CLA/slides/Lec1.qmd) 
+ - [Cognitive Modeling Lab Slides](/pages/CNMLabSlides/Lab1/lab1.qmd)
 
 ### R
 

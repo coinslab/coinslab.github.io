@@ -4,7 +4,7 @@
     "href": "contents.html",
     "title": "Contents",
     "section": "",
-    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra - SVD (10/10/2022)\n\n\n\n\n\nList of R Packages used in the Lab"
+    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra - SVD (10/10/2022)\nCognitive Modeling Lab Slides\n\n\n\n\n\nList of R Packages used in the Lab"
   },
   {
     "objectID": "contents.html#books",
@@ -131,5 +131,61 @@
     "title": "R Packages & Related Learning Resources",
     "section": "",
     "text": "An extensive list of R software for psychometric modeling can be found here.\n\nCognitive Diagnsotic Modeling\n\nCDM [Package Home Page]\n\n[Tutorial Paper] Ravand, H., & Robitzsch, A. (2015). Cognitive diagnostic modeling using R. Practical Assessment, Research, and Evaluation, 20(1), 11.\n[Tutorial Paper] George, A. C., & Robitzsch, A. (2015). Cognitive diagnosis models in R: A didactic. The Quantitative Methods for Psychology, 11(3), 189-205.\n\nGDINA [Package Home Page]\n\n[Tutorial Paper] Ma, W., & de la Torre, J. (2020). GDINA: An R package for cognitive diagnosis modeling. Journal of Statistical Software, 93, 1-26.\n\n\n[A Comparison of Software Packages Available for DINA] Sen, S., & Terzi, R. (2020). A comparison of software packages available for DINA model estimation. Applied Psychological Measurement, 44(2), 150-164.\n[Tutorial Paper on implementing CDMs using probablisitic programming in R] Zhan, P., Jiao, H., Man, K., & Wang, L. (2019). Using JAGS for Bayesian cognitive diagnosis modeling: A tutorial. Journal of Educational and Behavioral Statistics, 44(4), 473-503.\n\n\nBayesian Networks in Educational Assessment.\nA general documentation on bayesian networks in educational assessment can be found here.\n\nbnlearn [Package Home Page]\nCPTtools [Package Home Page]\nbayesvl for parameterized bayesian networks\n\n\nBayesian Networks Book Recommendations\n\nScutari, M., & Denis, J. B. (2021). Bayesian networks: with examples in R. Chapman and Hall/CRC.\nAlmond, R. G., Mislevy, R. J., Steinberg, L. S., Yan, D., & Williamson, D. M. (2015). Bayesian networks in educational assessment. Springer.\n\n\n\n\nBayesian Inference & Probablisitic Programming\n\nCmdStanR\nbayesvl\n\n\nBayesian Inference Book Recommendations\n\nMcElreath, R. (2020). Statistical rethinking: A Bayesian course with examples in R and Stan. Chapman and Hall/CRC.\nGelman, A., Carlin, J. B., Stern, H. S., & Rubin, D. B. (1995). Bayesian data analysis. Chapman and Hall/CRC."
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#student-objectives",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#student-objectives",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "Student Objectives: ",
+    "text": "Student Objectives: \n\nIdentify an engineering or scientific problem in Artificial Intelligence, Psychology, or Cognitive Neuroscience.\nIdentify & assess the quality of the data required to empirically investigate the problem.\nDevelop a 1 page project proposal abstract.\nUse the machine learning skills acquired through the lab and theory to investigate the problem.\n\nRecode the data using unsupervised learning (if necessary).\nImplement a simple logistic regression model, shallow neural network, and a deep neural network model.\nEvaluate the performance of your model (Confusion Matrix).\nDo 2-fold cross-validation.\nCompare the results of competing models.\n\nPresent the results of your study as a 15-minute talk.\nWrite and submit a ~10 page project report in APA Journal Article format."
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#so-1-identifying-the-problem",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#so-1-identifying-the-problem",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "SO 1: Identifying the problem",
+    "text": "SO 1: Identifying the problem\n\nYou fill out a project interest survey\n\nArtificial Intelligence Project Examples:\n\nEmail Spam Filter, Speech Recognition System, Twitter Hate Speech Detection\n\nPsychology Project Examples:\n\nHuman Emotion Classification using Eye-Feature, Psychopathy Diagnosis\n\nCognitive Neuroscience Project Examples:\n\nAlzheimer’s detection using fMRI, Analysis and Modeling of Neural Ensemble Rehearsal During Sleep, Tumor detection using MRI, Autism diagnosis using fMRI\n\n\nYou form groups by yourself or we help you find project groups"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#so-2-identify-assess-the-quality-of-the-data",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#so-2-identify-assess-the-quality-of-the-data",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "SO 2: Identify & assess the quality of the data",
+    "text": "SO 2: Identify & assess the quality of the data\nSome places to look for Data\n\nKaggle: For all sorts of datasets.\nUCI Machine Learning Repository: For all sorts of datasets.\nUCLA Library: For Psychological datasets.\nCMU Datashop: For Educational & Psychological datasets.\nOpenNeuro: For Neuroscience datasets.\nCRCNS: For Neuroscience datasets.\nRDatasets: A collection of common datasets used in all Statistical/Machine Learning textbooks.\nGoogle Dataset Search"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#so-3-project-proposal-abstract",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#so-3-project-proposal-abstract",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "SO 3: Project Proposal Abstract",
+    "text": "SO 3: Project Proposal Abstract"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#so-4-machine-learning-skillstools",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#so-4-machine-learning-skillstools",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "SO 4: Machine Learning Skills/Tools",
+    "text": "SO 4: Machine Learning Skills/Tools"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#common-ml-languages",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#common-ml-languages",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "Common ML Languages",
+    "text": "Common ML Languages"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#why-julia",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#why-julia",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "Why Julia ?",
+    "text": "Why Julia ?\n\nOpen Source (Free to Use, No license required to do commercial project in Julia)\nLess verbose (compared to R & Python)\nBest-in-class interoperability (with R, Python & C)\nReally fast when implementing computationally complex algorithms\nGood software engineering principles instantiated in the language design\nUsed widely in High Performance Scientific Computing\n\nShortcomings\n\nRelatively young community –> fewer packages compared to R or Python (RCall.jl & PythonCall.jl to the rescue)\nPackage installation can take some time (continually improving with each update)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html#topics-to-cover",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html#topics-to-cover",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "Topics to cover",
+    "text": "Topics to cover\n\nInstalling Julia\nChange language type in a new file\nKnow your IDE\nJulia REPL Modes\nInstalling Packages\nCreating a Julia Script\nProject Environments"
   }
 ]

@@ -1,0 +1,99 @@
+---
+title: "Lab 1: Hello Julia! ![](/pages/CNMLabSlides/Lab1/julia-dots.svg){width=5%}"
+date-modified: today
+controls: true
+controls-layout: bottom-right
+format: 
+    revealjs:
+        theme: simple
+        history: false
+        highlight-style: github
+        chalkboard: true
+        scrollable: true
+execute:
+  freeze: true
+  daemon: 600000
+jupyter: julia-1.8
+---
+
+# <span style="color:#c30010"><u>Lab Teaching Objective: </u></span>
+
+Train you with the necessary tools and skills you need to complete your modeling project
+
+## <span style="color:#c30010"><u>Student Objectives: </u></span> {.smaller}
+- Identify an engineering or scientific problem in Artificial Intelligence, Psychology, or Cognitive Neuroscience. 
+- Identify & assess the quality of the data required to empirically investigate the problem. 
+- Develop a 1 page project proposal abstract.
+- Use the machine learning skills acquired through the lab and theory to investigate the problem.
+    - Recode the data using unsupervised learning (if necessary).
+    - Implement a simple logistic regression model, shallow neural network, and a deep neural network model.
+    - Evaluate the performance of your model (Confusion Matrix). 
+    - Do 2-fold cross-validation.
+    - Compare the results of competing models.
+- Present the results of your study as a 15-minute talk.
+- Write and submit a ~10 page project report in APA Journal Article format.
+
+## SO 1: Identifying the problem {.smaller}
+
+- You fill out a project interest survey 
+    - Artificial Intelligence Project Examples:
+        - Email Spam Filter, Speech Recognition System, Twitter Hate Speech Detection
+    - Psychology Project Examples:
+        - Human Emotion Classification using Eye-Feature, Psychopathy Diagnosis 
+    - Cognitive Neuroscience Project Examples:
+        - Alzheimer's detection using fMRI, Analysis and Modeling of Neural Ensemble Rehearsal During Sleep, Tumor detection using MRI, Autism diagnosis using fMRI
+- You form groups by yourself or we help you find project groups
+
+## SO 2: Identify & assess the quality of the data {.smaller }
+#### <span style="color:#c30010">Some places to look for Data</span> {.smaller}
+
+- [Kaggle](https://www.kaggle.com/datasets): For all sorts of datasets.
+- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php?task=cla&area=&type=&view=table): For all sorts of datasets.
+- [UCLA Library](https://guides.library.ucla.edu/c.php?g=180221&p=1188487): For Psychological datasets.
+- [CMU Datashop](https://pslcdatashop.web.cmu.edu): For Educational & Psychological datasets.
+- [OpenNeuro](https://openneuro.org/search): For Neuroscience datasets.
+- [CRCNS](https://crcns.org): For Neuroscience datasets. 
+- [RDatasets](https://github.com/JuliaStats/RDatasets.jl): A collection of common datasets used in all Statistical/Machine Learning textbooks.
+- [Google Dataset Search](https://datasetsearch.research.google.com) 
+
+## SO 3: Project Proposal Abstract {.smaller}
+![](/pages/CNMLabSlides/Lab1/abstract.png){fig-align="center"}
+
+## SO 4: Machine Learning Skills/Tools 
+
+::: {layout="[[-1], [1], [-1]]"}
+::: {layout-ncol=2}
+![](/pages/CNMLabSlides/Lab1/scikit.png)
+
+![](/pages/CNMLabSlides/Lab1/cmp.png)
+:::
+:::
+
+## Common ML Languages 
+
+![](/pages/CNMLabSlides/Lab1/MLlang.png)
+
+## Why Julia ? {.smaller}
+
+- Open Source (Free to Use, No license required to do commercial project in Julia)
+- Less verbose (compared to R & Python)
+- Best-in-class interoperability (with R, Python & C)
+- Really fast when implementing computationally complex algorithms
+- Good software engineering principles instantiated in the language design 
+- Used widely in High Performance Scientific Computing 
+
+
+### Shortcomings 
+- Relatively young community --> fewer packages compared to R or Python (`RCall.jl` & `PythonCall.jl` to the rescue)
+- Package installation can take some time (continually improving with each update)
+
+## Topics to cover {.smaller}
+
+- [Installing Julia](https://coinslab.github.io/pages/juliaup-setup.html) 
+- Change language type in a new file
+- [Know your IDE](https://athulsudheesh.github.io/IJML/hellojulia.html#know-your-ide)
+- [Julia REPL Modes](https://athulsudheesh.github.io/IJML/hellojulia.html#julia-repl) 
+- [Installing Packages](https://athulsudheesh.github.io/IJML/hellojulia.html#sec-install-package)
+- [Creating a Julia Script](https://athulsudheesh.github.io/IJML/hellojulia.html#sec-julia-script) 
+- [Project Environments](https://athulsudheesh.github.io/IJML/hellojulia.html#project-environments)
+
