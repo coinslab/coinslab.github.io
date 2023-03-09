@@ -1,0 +1,11 @@
+{
+  "hash": "ea844a8121045e0007c26a6c8bc58246",
+  "result": {
+    "markdown": "---\ntitle: Computational Linear Algebra\nauthor: Athul Sudheesh\ndate: Fall 2022\ncontrols: true\ncontrols-layout: bottom-right\nformat:\n  revealjs:\n    theme: simple\n    history: false\n    highlight-style: github\nexecute:\n  freeze: true\n  daemon: 600000\n---\n\n",
+    "supporting": [
+      "CGS-LinearAlgebra_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

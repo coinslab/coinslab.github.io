@@ -1,0 +1,16 @@
+---
+title: "Computational Linear Algebra"
+author: "Athul Sudheesh"
+date: Fall 2022
+controls: true
+controls-layout: bottom-right
+format: 
+    revealjs:
+        theme: simple
+        history: false
+        highlight-style: github
+execute:
+  freeze: true
+  daemon: 600000
+jupyter: julia-1.8
+---

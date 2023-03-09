@@ -13,9 +13,11 @@ For the past several decades, the primary languge used in the lab was MATLAB. St
 - [Getting Started in Julia](/pages/julia-getting-started.qmd)
 - [Setting up Julia via `juliaup`](/pages/juliaup-setup.qmd)
 
-### Slides from Julia Office Hours 
+### Slides from Julia Office Hours
+ - [Linear Algebra: Vectors and Matrices (03/09/2023)](/pages/CNMLabSlides/Intro.qmd)  
+ - [Linear Algebra: Application using SVD (03/09/2023)](/pages/CNMLabSlides/EigenAnalysis.qmd)
  - [Linear Algebra - SVD (10/10/2022)](/pages/CLA/slides/Lec1.qmd) 
- - [Cognitive Modeling Lab Slides](/pages/CNMLabSlides/Lab1/lab1.qmd)
+ - [Cognitive Modeling Lab - Intro](/pages/CNMLabSlides/Lab1/lab1.qmd)
 
 ### R
 

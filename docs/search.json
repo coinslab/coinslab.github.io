@@ -4,7 +4,7 @@
     "href": "contents.html",
     "title": "Contents",
     "section": "",
-    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra - SVD (10/10/2022)\nCognitive Modeling Lab Slides\n\n\n\n\n\nList of R Packages used in the Lab"
+    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra: Vectors and Matrices (03/09/2023)\n\nLinear Algebra: Application using SVD (03/09/2023)\nLinear Algebra - SVD (10/10/2022)\nCognitive Modeling Lab - Intro\n\n\n\n\n\nList of R Packages used in the Lab"
   },
   {
     "objectID": "contents.html#books",
@@ -187,5 +187,425 @@
     "title": "Lab 1: Hello Julia! ",
     "section": "Topics to cover",
     "text": "Topics to cover\n\nInstalling Julia\nChange language type in a new file\nKnow your IDE\nJulia REPL Modes\nInstalling Packages\nCreating a Julia Script\nProject Environments"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#a",
+    "href": "pages/CNMLabSlides/Intro.html#a",
+    "title": "",
+    "section": "A",
+    "text": "A"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#why",
+    "href": "pages/CNMLabSlides/Intro.html#why",
+    "title": "",
+    "section": "Why",
+    "text": "Why"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra",
+    "href": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra",
+    "title": "",
+    "section": "Why study Linear Algebra?",
+    "text": "Why study Linear Algebra?\n\n\nIt is the magic recipe behind everything computational\nIt is part of your everyday life! Some examples:\n\nPage Rank Algorithm (Google Search)\nVoice Assistants (Siri/Alexa)\nImage & Audio Editing Software\nChatGPT"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra-linear-system",
+    "href": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra-linear-system",
+    "title": "",
+    "section": "Why study Linear Algebra & Linear System?",
+    "text": "Why study Linear Algebra & Linear System?\n\n\nIt is the magic recipe behind everything computational\nIt is part of your everyday life!\n\nSearch Algorithms\nVoice Assistants (Siri/Alexa)\nImage & Audio Editing Software\nChatGPT & All other Deep Neural Networks"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-example",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-example",
+    "title": "",
+    "section": "Image editing example",
+    "text": "Image editing example"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\nusing Images, ImageIO, ImageMagick\nutd = joinpath(pwd(),\"utd.jpeg\") \nutdimg = load(utd)\nutdimg"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-1",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-1",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\n\nFloat64.(Gray.(utdimg))\n\n334×500 Matrix{Float64}:\n 0.490196   0.490196   0.490196   …  0.443137    0.443137   0.443137\n 0.490196   0.490196   0.494118      0.447059    0.447059   0.447059\n 0.494118   0.494118   0.494118      0.447059    0.447059   0.447059\n 0.498039   0.498039   0.498039      0.45098     0.45098    0.45098\n 0.501961   0.501961   0.501961      0.454902    0.454902   0.454902\n 0.505882   0.505882   0.505882   …  0.458824    0.458824   0.458824\n 0.509804   0.509804   0.509804      0.458824    0.458824   0.458824\n 0.509804   0.509804   0.513725      0.462745    0.462745   0.462745\n 0.513725   0.513725   0.513725      0.462745    0.462745   0.462745\n 0.517647   0.517647   0.517647      0.462745    0.462745   0.462745\n 0.521569   0.521569   0.517647   …  0.466667    0.466667   0.466667\n 0.52549    0.52549    0.521569      0.466667    0.466667   0.466667\n 0.529412   0.529412   0.52549       0.470588    0.470588   0.470588\n ⋮                                ⋱                         \n 0.054902   0.0117647  0.0627451     0.423529    0.54902    0.243137\n 0.152941   0.0666667  0.0705882     0.466667    0.52549    0.478431\n 0.360784   0.196078   0.101961      0.141176    0.152941   0.203922\n 0.341176   0.164706   0.0745098  …  0.0235294   0.152941   0.27451\n 0.176471   0.0509804  0.027451      0.00392157  0.0745098  0.164706\n 0.133333   0.0313725  0.0313725     0.0627451   0.0235294  0.0941176\n 0.0588235  0.0862745  0.0156863     0.113725    0.0745098  0.0352941\n 0.423529   0.388235   0.0627451     0.184314    0.105882   0.00392157\n 0.333333   0.184314   0.0666667  …  0.243137    0.321569   0.105882\n 0.298039   0.34902    0.235294      0.164706    0.423529   0.541176\n 0.364706   0.235294   0.403922      0.180392    0.478431   0.321569\n 0.196078   0.27451    0.258824      0.141176    0.521569   0.470588"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-2",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-2",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\n\n\nGray.(utdimg)\n\n\n\n\n\n\nGray.(utdimg) .+ 0.5"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-3",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-3",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\n\n\nGray.(utdimg)\n\n\n\n\n\n\nGray.(utdimg) .- 0.5"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-4",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-4",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\n\n\nGray.(utdimg)\n\n\n\n\n\n\nGray.(utdimg) .* 0.5"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-5",
+    "href": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra-5",
+    "title": "",
+    "section": "Image Editing using Linear Algebra",
+    "text": "Image Editing using Linear Algebra\n\n\n\nGray.(utdimg)\n\n\n\n\n\n\nGray.(utdimg)[1:5:end,1:5:end]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra",
+    "href": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra",
+    "title": "",
+    "section": "Building Bocks of Linear Algebra",
+    "text": "Building Bocks of Linear Algebra\n\n\nScalars, c\n\ndenoted by italics lowercase character\n\n0D\n\n\n\nc = 2 \n\n2\n\n\n\nVectors, \\(\\mathbf{x}= [ x_1, x_2, x_3]\\)\n\ndenoted by boldface lowercase character\n\nelements of a vector are denoted by lower case characters with subscripts\nsubscripts denote the position of the elements in the vector\n\n1D\n\n\n\n# Row Vector \nx = [1,2,3] \n\n3-element Vector{Int64}:\n 1\n 2\n 3\n\n\n\n# Column Vector \nx = [1 2 3] \n\n1×3 Matrix{Int64}:\n 1  2  3"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra-1",
+    "href": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra-1",
+    "title": "",
+    "section": "Building Bocks of Linear Algebra",
+    "text": "Building Bocks of Linear Algebra\n\n\nMatrices, \\[\\mathbf{A} = \\begin{bmatrix}\n  a_{11} & a_{12} & c_{13} \\\\\n  a_{21} & a_{22} & a_{23}\\\\\n  \\end{bmatrix}\\]\n\ndenoted by uppercase boldface character\n\nelements of a matrix are denoted by lowercase character with subscripts\nsubscript denotes the row number and column number of the element\n\n2D\n\n\n\nA = [21 12 99;\n    11 43 51] \n\n2×3 Matrix{Int64}:\n 21  12  99\n 11  43  51\n\n\n\nTensors,\n\nN dimensional, where \\(N > 2\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#building-blocks-of-linear-algebra",
+    "href": "pages/CNMLabSlides/Intro.html#building-blocks-of-linear-algebra",
+    "title": "",
+    "section": "Building Blocks of Linear Algebra",
+    "text": "Building Blocks of Linear Algebra\n\n\nScalars, c\n\ndenoted by italics lowercase character\n\n0D Array\n\n\n\nc = 2 \n\n2\n\n\n\nVectors, \\(\\mathbf{x}= [ x_1, x_2, x_3]\\)\n\ndenoted by boldface lowercase character\n\nelements of a vector are denoted by lower case characters with subscripts\nsubscripts denote the position of the elements in the vector\n\n1D Array\n\n\n\n# Column Vector \nx = [1,2,3] \n\n3-element Vector{Int64}:\n 1\n 2\n 3\n\n\n\n# Row Vector \nx = [1 2 3] \n\n1×3 Matrix{Int64}:\n 1  2  3"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#building-blocks-of-linear-algebra-1",
+    "href": "pages/CNMLabSlides/Intro.html#building-blocks-of-linear-algebra-1",
+    "title": "",
+    "section": "Building Blocks of Linear Algebra",
+    "text": "Building Blocks of Linear Algebra\n\n\nMatrices, \\[\\mathbf{A} = \\begin{bmatrix}\n  a_{11} & a_{12} & c_{13} \\\\\n  a_{21} & a_{22} & a_{23}\\\\\n  \\end{bmatrix}\\]\n\ndenoted by uppercase boldface character\n\nelements of a matrix are denoted by lowercase character with subscripts\nsubscript denotes the row number and column number of the element\n\n2D Array\n\n\n\nA = [21 12 99;\n    11 43 51] \n\n2×3 Matrix{Int64}:\n 21  12  99\n 11  43  51\n\n\n\nTensors,\n\nN dimensional Array, where \\(N > 2\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vectors-are-points-in-space",
+    "href": "pages/CNMLabSlides/Intro.html#vectors-are-points-in-space",
+    "title": "",
+    "section": "Vectors are points in space",
+    "text": "Vectors are points in space"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vectors-are-points-in-space-1",
+    "href": "pages/CNMLabSlides/Intro.html#vectors-are-points-in-space-1",
+    "title": "",
+    "section": "Vectors are points in space",
+    "text": "Vectors are points in space"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#scalar-vector-multiplication",
+    "href": "pages/CNMLabSlides/Intro.html#scalar-vector-multiplication",
+    "title": "",
+    "section": "Scalar Vector Multiplication",
+    "text": "Scalar Vector Multiplication\n\n\n\\(\\mathbf{x} = [4,7]\\)\n\n\n\n\n\n\n\\(\\mathbf{x} \\times 0.2 = [4*0.2, 7*0.2] = [0.8, 1.4]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#scalar-vector-multiplication-1",
+    "href": "pages/CNMLabSlides/Intro.html#scalar-vector-multiplication-1",
+    "title": "",
+    "section": "Scalar Vector Multiplication",
+    "text": "Scalar Vector Multiplication\n\n\n\\(\\mathbf{x} = [4,7]\\)\n\n\n\n\n\n\n\\(\\mathbf{x} \\times -1 = [4* -1, 7* -1] = [-4, -7]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-addition",
+    "href": "pages/CNMLabSlides/Intro.html#vector-addition",
+    "title": "",
+    "section": "Vector Addition",
+    "text": "Vector Addition\n\n\n\\(\\mathbf{x} = [1,2]\\)\n\n\n\n\n\n\n\\(\\mathbf{y} = [3,1]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-addition-1",
+    "href": "pages/CNMLabSlides/Intro.html#vector-addition-1",
+    "title": "",
+    "section": "Vector Addition",
+    "text": "Vector Addition\n\n\n\n\n\n\n\n\n\n\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-addition-2",
+    "href": "pages/CNMLabSlides/Intro.html#vector-addition-2",
+    "title": "",
+    "section": "Vector Addition",
+    "text": "Vector Addition\n\n\n\n\n\n\n\n\n\n\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)\n\\(\\mathbf{x} + \\mathbf{y} = \\\\ [1,2] + [3,1] = \\\\ [1+3, 2+1] = \\\\ [4,3]\\)\nIn Julia:\n\n\nx =[1,2]\ny = [3,1]\nx+y\n\n2-element Vector{Int64}:\n 4\n 3"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-multiplication",
+    "href": "pages/CNMLabSlides/Intro.html#vector-multiplication",
+    "title": "",
+    "section": "Vector Multiplication",
+    "text": "Vector Multiplication\nThere are several ways to multiply two vectors:\n\nDot Product (Inner Product), \\(\\qquad \\mathbf{a} \\cdot \\mathbf{b}\\)\nOuter Product \\(\\qquad \\qquad \\quad \\mathbf{a} \\otimes \\mathbf{b}\\)\nCross Product \\(\\quad \\quad \\quad \\qquad \\mathbf{a} \\times \\mathbf{b}\\)\nHadamard Product \\(\\quad \\quad \\quad \\mathbf{a} \\odot \\mathbf{b}\\)\nKronecker Product \\(\\quad \\quad \\quad \\mathbf{a} \\otimes \\mathbf{b}\\)\n\nNote: These are not the same! Each method gives you a different output."
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-dot-product",
+    "href": "pages/CNMLabSlides/Intro.html#vector-dot-product",
+    "title": "",
+    "section": "Vector Dot Product",
+    "text": "Vector Dot Product\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = \\begin{bmatrix}  a_{1} \\\\ \\vdots \\\\ a_{n}  \\end{bmatrix}\n\\boldsymbol{\\bullet}\n\\begin{bmatrix} b_{1} \\\\ \\vdots \\\\ b_{n} \\end{bmatrix}\n= \\sum_{i=1}^{n} a_i b_i\n\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#t",
+    "href": "pages/CNMLabSlides/Intro.html#t",
+    "title": "",
+    "section": "t",
+    "text": "t\nConsider two vectors, \\(\\mathbf{v} = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\), \\(\\mathbf{w} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 1 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#d",
+    "href": "pages/CNMLabSlides/Intro.html#d",
+    "title": "",
+    "section": "d",
+    "text": "d\n\n::: ::: {.column width=“50%”} ::::"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-dot-product-1",
+    "href": "pages/CNMLabSlides/Intro.html#vector-dot-product-1",
+    "title": "",
+    "section": "Vector Dot Product",
+    "text": "Vector Dot Product\nConsider two vectors, \\(\\mathbf{v} = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\), \\(\\mathbf{w} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 1 \\end{bmatrix}\\)\n\\[\n\\mathbf{v} \\cdot \\mathbf{w} = (3 \\times 1) + (-1 \\times 2) + (2 \\times 1) \\\\\n= 3\n\\]\n\nusing LinearAlgebra\nv = [3 -1 2]\nw = [1 2 1]\ndot(v,w)\n\n3\n\n\nAlternatively,\n\nv * w'\n\n1×1 Matrix{Int64}:\n 3"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#vector-magnitude",
+    "href": "pages/CNMLabSlides/Intro.html#vector-magnitude",
+    "title": "",
+    "section": "Vector Magnitude",
+    "text": "Vector Magnitude\n\nSquareroot of the inner product of a vector with itself gives the magnitude of that vector"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#section",
+    "href": "pages/CNMLabSlides/Intro.html#section",
+    "title": "",
+    "section": "",
+    "text": "\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#section-1",
+    "href": "pages/CNMLabSlides/Intro.html#section-1",
+    "title": "",
+    "section": "",
+    "text": "\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)\n\\(\\mathbf{x} + \\mathbf{y} = \\\\ [1,2] + [3,1] = \\\\ [1+3, 2+1] = \\\\ [4,3]\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors",
+    "href": "pages/CNMLabSlides/Intro.html#distance-between-vectors",
+    "title": "",
+    "section": "Distance between vectors",
+    "text": "Distance between vectors\nL1 Norm / Manhattan Distance\n\n\n\n\n\n\n\n\n\n\\(|\\mathbf{u} -\\mathbf{v}|_1 = \\\\ |3-1| + |1-2| = \\\\ |2| + |-1| \\\\ = 3\\)\n\n\nusing LinearAlgebra\nu = [1,2]\nv = [3,1]\nnorm(u-v,1)\n\n3.0"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#s",
+    "href": "pages/CNMLabSlides/Intro.html#s",
+    "title": "",
+    "section": "s",
+    "text": "s"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors-1",
+    "href": "pages/CNMLabSlides/Intro.html#distance-between-vectors-1",
+    "title": "",
+    "section": "Distance between vectors",
+    "text": "Distance between vectors\nL2 Norm / Euclidean Distance\n\n\n\n\n\n\n\n\n\n\\(|\\mathbf{u} -\\mathbf{v}|_2 = \\\\ \\sqrt{(3-1)^2 + (1-2)^2} = \\\\ \\sqrt{(2)^2 + (-1)^2} =\\\\ \\sqrt{4+1} = \\sqrt{5} = 2.2361\\)\n\n\nusing LinearAlgebra\nu = [1,2]\nv = [3,1]\nnorm(u-v,2)\n\n2.23606797749979"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors-2",
+    "href": "pages/CNMLabSlides/Intro.html#distance-between-vectors-2",
+    "title": "",
+    "section": "Distance between vectors",
+    "text": "Distance between vectors\nAngular Separation\n\n\n\n\n\n\n\n\n\n\\[\\cos \\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{||\\mathbf{u}|| ||\\mathbf{v}||} = \\] \\(\\frac{(1 \\times 3) + (2 \\times 1)}{\\sqrt{(1)^1+(2)^2} \\times \\sqrt{(3)^2+(1)^2}} = \\frac{1}{\\sqrt{2}}\\)\n\\(\\theta = \\cos^{-1} (\\frac{1}{\\sqrt{2}}) = \\\\ 45^{\\circ}\\)\n\n\nusing LinearAlgebra\nu = [1,2]\nv = [3,1]\nunorm = norm(u,2)\nvnorm = norm(v,2)\nacosd(dot(u,v) / (unorm*vnorm))\n\n45.00000000000001"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors-3",
+    "href": "pages/CNMLabSlides/Intro.html#distance-between-vectors-3",
+    "title": "",
+    "section": "Distance between vectors",
+    "text": "Distance between vectors\nAngular Separation is a similarity measure\n\n\n\n\n\n\n\n\n\nusing LinearAlgebra\nu = [1,2]\nv = [1.5,3]\nunorm = norm(u,2)\nvnorm = norm(v,2)\nacosd(dot(u,v) / (unorm*vnorm))\n\n8.537736462515939e-7"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#linear-neuron-model",
+    "href": "pages/CNMLabSlides/Intro.html#linear-neuron-model",
+    "title": "",
+    "section": "Linear Neuron Model",
+    "text": "Linear Neuron Model\n\n\n\n\n\nWhat is the output of this neuron model?"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-operation",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-operation",
+    "title": "",
+    "section": "Matrix Operation",
+    "text": "Matrix Operation\n\n\nAddition\n\nM = [2 6;8 4]\n\n2×2 Matrix{Int64}:\n 2  6\n 8  4\n\n\n\nN = [1 0;-1 3]\n\n2×2 Matrix{Int64}:\n  1  0\n -1  3\n\n\n\nM + N\n\n2×2 Matrix{Int64}:\n 3  6\n 7  7\n\n\n\nMultiplication by Scalar\n\n3 * M\n\n2×2 Matrix{Int64}:\n  6  18\n 24  12\n\n\nMatrix Transpose\n\ntranspose(M)\n\n2×2 transpose(::Matrix{Int64}) with eltype Int64:\n 2  8\n 6  4"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-operations",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-operations",
+    "title": "",
+    "section": "Matrix Operations",
+    "text": "Matrix Operations\n\n\nAddition\n\nM = [2 6;8 4]\n\n2×2 Matrix{Int64}:\n 2  6\n 8  4\n\n\n\nN = [1 0;-1 3]\n\n2×2 Matrix{Int64}:\n  1  0\n -1  3\n\n\n\nM + N\n\n2×2 Matrix{Int64}:\n 3  6\n 7  7\n\n\n\nMultiplication by Scalar\n\n3 * M\n\n2×2 Matrix{Int64}:\n  6  18\n 24  12\n\n\nMatrix Transpose\n\ntranspose(M)\n\n2×2 transpose(::Matrix{Int64}) with eltype Int64:\n 2  8\n 6  4"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#l-d",
+    "href": "pages/CNMLabSlides/Intro.html#l-d",
+    "title": "",
+    "section": "l d",
+    "text": "l d"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\nAs Linear Transformation\n\n\n\n\n\n\n\n\n\n\\(\\mathbf{u} = \\begin{bmatrix}4 \\\\1 \\end{bmatrix}\\)\nMultiply \\(\\mathbf{u}\\) by \\(\\mathbf{A} = \\begin{bmatrix}1 & -3 \\\\1 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-1",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-1",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\nAs Linear Transformation"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-2",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-2",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\nAs Linear Transformation\n\n\n\\(\\begin{bmatrix}1 & -3 \\\\1 & -1 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 1 \\end{bmatrix} =\\) \\[ 4 \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} + 1 \\begin{bmatrix} -3 \\\\ - 1\\end{bmatrix} =\\]\n\\[\\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-3",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-3",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\n\nAs Linear Transformation (Coordinate Transformation)\n\n\n\n\n\n\nblue represents the transformed coordinates"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-4",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-4",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\nWhat is the value of \\(\\mathbf{u}\\)? \\[\\mathbf{u} = \\begin{bmatrix} 3 & 4 & 5 \\\\ 1 & 0 & 1 \\end{bmatrix}\n\\begin{bmatrix} 1 \\\\ 0 \\\\ 2\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-5",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication-5",
+    "title": "",
+    "section": "Matrix-Vector Multiplication",
+    "text": "Matrix-Vector Multiplication\nWhat is the value of \\(\\mathbf{u}\\)? \\[\\mathbf{u} = \\begin{bmatrix} 3 & 4 & 5 \\\\ 1 & 0 & 1 \\end{bmatrix}\n\\begin{bmatrix} 1 \\\\ 0 \\\\ 2\\end{bmatrix}\\]\n\\(= 1 \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix} + 0 \\begin{bmatrix} 4 \\\\ 0 \\end{bmatrix} + 2 \\begin{bmatrix} 5 \\\\ 1 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 13 \\\\ 3 \\end{bmatrix}\\)\n\nw = [3 4 5; 1 0 1]\nv= [1,0,2]\nw*v\n\n2-element Vector{Int64}:\n 13\n  3"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#connection-weight-matrix",
+    "href": "pages/CNMLabSlides/Intro.html#connection-weight-matrix",
+    "title": "",
+    "section": "Connection Weight Matrix",
+    "text": "Connection Weight Matrix\n\n\n\n\n\\[\n\\begin{bmatrix}\nw_{11} & w_{12} & w_{13} & w_{14} \\\\\nw_{21} & w_{22} & w_{23} & w_{24}\\\\\nw_{31} & w_{32} & w_{33} & w_{34}\\\\\n\\end{bmatrix}\n\\]\n\\[\n\\mathbf{r} = \\mathbf{W} \\mathbf{x}\n\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#connection-weight-matrix-1",
+    "href": "pages/CNMLabSlides/Intro.html#connection-weight-matrix-1",
+    "title": "",
+    "section": "Connection Weight Matrix",
+    "text": "Connection Weight Matrix\n\n\n\n\n\\[\n\\begin{bmatrix}\nw_{11} & w_{12} & w_{13} & 0 \\\\\n0 & 0 & 0 & w_{24}\\\\\n0 & 0 & w_{33} & w_{34}\\\\\n\\end{bmatrix}\n\\]\n\\[\n\\mathbf{r} = \\mathbf{W} \\mathbf{x}\n\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#connection-weight-matrix-2",
+    "href": "pages/CNMLabSlides/Intro.html#connection-weight-matrix-2",
+    "title": "",
+    "section": "Connection Weight Matrix",
+    "text": "Connection Weight Matrix\n\n\n\n\n\\[\n\\begin{bmatrix}\nw_{11} & w_{12} & w_{13} & 0 \\\\\n0 & 0 & 0 & w_{24}\\\\\n0 & 0 & w_{33} & w_{34}\\\\\n\\end{bmatrix}\n\\]\n\\[\n\\mathbf{r} = \\mathbf{W} \\mathbf{x}\n\\]\n\\[\n\\mathbf{y} = \\mathbf{H} \\mathbf{r}\n\\]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication",
+    "title": "",
+    "section": "Matrix-Matrix Multiplication",
+    "text": "Matrix-Matrix Multiplication\n\n\\(\\begin{bmatrix} 1 & 2 \\\\ 3 & 1 \\\\ 1 & -1 \\\\ \\end{bmatrix} \\begin{bmatrix} 3 & 1 \\\\ 1 & 2 \\\\ \\end{bmatrix} =\\)\n\\[\\begin{bmatrix} \\begin{bmatrix} 1 & 2 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 1 & 2 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n\\begin{bmatrix} 3 & 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 3 & 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n  \\begin{bmatrix} 1 & -1 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 1 & -1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n\\end{bmatrix} = \\]\n\\[\\begin{bmatrix} 5 & 5 \\\\ 10 & 5 \\\\ 2 & - 1 \\end{bmatrix}\\]\n\nA = [1 2; 3 1;1 -1]\nB = [3 1; 1 2]\nA * B\n\n3×2 Matrix{Int64}:\n  5   5\n 10   5\n  2  -1"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication-1",
+    "href": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication-1",
+    "title": "",
+    "section": "Matrix-Matrix Multiplication",
+    "text": "Matrix-Matrix Multiplication\n\nA = [1 2; 3 1;1 -1]\nB = [3 1; 1 2]\nA * B\n\n3×2 Matrix{Int64}:\n  5   5\n 10   5\n  2  -1"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices",
+    "title": "",
+    "section": "Recall: Images are Matrices",
+    "text": "Recall: Images are Matrices"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-1",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-1",
+    "title": "",
+    "section": "Recall: Images are Matrices",
+    "text": "Recall: Images are Matrices\n\n\n\n\n\n\n\n\n\n(334, 500)\n\n\n\n\nutdimg[5,5]\n\n\n\n\n\nutdimg[105,305]\n\n\n\n\n\nutdimg[334,500]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-2",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-2",
+    "title": "",
+    "section": "Recall: Images are Matrices",
+    "text": "Recall: Images are Matrices\n\n\n\nr = RGB.(red.(utdimg), zeros(m,n), zeros(m,n))\n\n\n\n\n\n\ng = RGB.(zeros(m,n), green.(utdimg), zeros(m,n))\n\n\n\n\n\n\nb = RGB.(zeros(m,n), zeros(m,n), blue.(utdimg))\n\n\n\n\n\n\n\n\n\n\n\nr .+ b .+ g"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-3",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-3",
+    "title": "",
+    "section": "Recall: Images are Matrices",
+    "text": "Recall: Images are Matrices\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\nutdbnw[100:170, 260:490]\n\n\n\n\n\n\nutdbnw[5,5]\n\n\n\n\n\nutdbnw[105,305]\n\n\n\n\n\nutdbnw[334,500]"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-4",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-4",
+    "title": "",
+    "section": "Recall: Images are Matrices",
+    "text": "Recall: Images are Matrices\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\n\n\nvec(Float64.(utdbnw))\n\n167000-element Vector{Float64}:\n 0.49019607843137253\n 0.49019607843137253\n 0.49411764705882355\n 0.4980392156862745\n 0.5019607843137255\n 0.5058823529411764\n 0.5098039215686274\n 0.5098039215686274\n 0.5137254901960784\n 0.5176470588235295\n 0.5215686274509804\n 0.5254901960784314\n 0.5294117647058824\n ⋮\n 0.24313725490196078\n 0.47843137254901963\n 0.20392156862745098\n 0.27450980392156865\n 0.16470588235294117\n 0.09411764705882353\n 0.03529411764705882\n 0.00392156862745098\n 0.10588235294117647\n 0.5411764705882353\n 0.3215686274509804\n 0.47058823529411764"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#image-compression-using-svd",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#image-compression-using-svd",
+    "title": "",
+    "section": "Image Compression using SVD",
+    "text": "Image Compression using SVD\n\nusing LinearAlgebra \nU,S,V = svd(Float64.(Gray.(utdbnw)))\nRGB.(U*diagm(S)*V')"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#image-compression-using-svd-1",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#image-compression-using-svd-1",
+    "title": "",
+    "section": "Image Compression using SVD",
+    "text": "Image Compression using SVD\n\nfunction compressimg(n)\n    RGB.(U[:,1:n]*diagm(S[1:n])*V[:,1:n]')\nend\n\ncompressimg (generic function with 1 method)\n\n\n\ncompressimg(20)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#whats-the-optimal-number-of-features",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#whats-the-optimal-number-of-features",
+    "title": "",
+    "section": "What’s the optimal number of features ?",
+    "text": "What’s the optimal number of features ?"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#whats-the-optimal-number-of-features-1",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#whats-the-optimal-number-of-features-1",
+    "title": "",
+    "section": "What’s the optimal number of features ?",
+    "text": "What’s the optimal number of features ?\n\n\n\n\n\n\n\n\n\ncompressimg(10)\n\n\n\n\n\n\n\n\ncompressimg(20)\n\n\n\n\n\ncompressimg(30)"
+  },
+  {
+    "objectID": "pages/CNMLabSlides/Lab1/lab1.html",
+    "href": "pages/CNMLabSlides/Lab1/lab1.html",
+    "title": "Lab 1: Hello Julia! ",
+    "section": "",
+    "text": "Train you with the necessary tools and skills you need to complete your modeling project\n\n\n\nIdentify an engineering or scientific problem in Artificial Intelligence, Psychology, or Cognitive Neuroscience.\nIdentify & assess the quality of the data required to empirically investigate the problem.\nDevelop a 1 page project proposal abstract.\nUse the machine learning skills acquired through the lab and theory to investigate the problem.\n\nRecode the data using unsupervised learning (if necessary).\nImplement a simple logistic regression model, shallow neural network, and a deep neural network model.\nEvaluate the performance of your model (Confusion Matrix).\nDo 2-fold cross-validation.\nCompare the results of competing models.\n\nPresent the results of your study as a 15-minute talk.\nWrite and submit a ~10 page project report in APA Journal Article format.\n\n\n\n\n\nYou fill out a project interest survey\n\nArtificial Intelligence Project Examples:\n\nEmail Spam Filter, Speech Recognition System, Twitter Hate Speech Detection\n\nPsychology Project Examples:\n\nHuman Emotion Classification using Eye-Feature, Psychopathy Diagnosis\n\nCognitive Neuroscience Project Examples:\n\nAlzheimer’s detection using fMRI, Analysis and Modeling of Neural Ensemble Rehearsal During Sleep, Tumor detection using MRI, Autism diagnosis using fMRI\n\n\nYou form groups by yourself or we help you find project groups\n\n\n\n\n\n\n\nKaggle: For all sorts of datasets.\nUCI Machine Learning Repository: For all sorts of datasets.\nUCLA Library: For Psychological datasets.\nCMU Datashop: For Educational & Psychological datasets.\nOpenNeuro: For Neuroscience datasets.\nCRCNS: For Neuroscience datasets.\nRDatasets: A collection of common datasets used in all Statistical/Machine Learning textbooks.\nGoogle Dataset Search\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source (Free to Use, No license required to do commercial project in Julia)\nLess verbose (compared to R & Python)\nBest-in-class interoperability (with R, Python & C)\nReally fast when implementing computationally complex algorithms\nGood software engineering principles instantiated in the language design\nUsed widely in High Performance Scientific Computing\n\n\n\n\nRelatively young community –> fewer packages compared to R or Python (RCall.jl & PythonCall.jl to the rescue)\nPackage installation can take some time (continually improving with each update)\n\n\n\n\n\n\nInstalling Julia\nChange language type in a new file\nKnow your IDE\nJulia REPL Modes\nInstalling Packages\nCreating a Julia Script\nProject Environments"
   }
 ]

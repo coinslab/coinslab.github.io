@@ -1,0 +1,770 @@
+---
+title: ""
+controls: true
+controls-layout: bottom-right
+format: 
+    revealjs:
+        theme: simple
+        history: false
+        highlight-style: github
+        chalkboard: true
+        scrollable: true
+        include-in-header: 
+            text: |
+                <style>
+                    .center-xy-eq {
+                    margin: 0;
+                    position: absolute;
+                    top: 30%;
+                    left: 30%;
+                    -ms-transform: translateY(-50%), translateX(-50%);
+                    transform: translateY(-50%), translateX(-50%);}
+                </style>
+execute:
+  freeze: true
+  daemon: 600000
+jupyter: julia-1.8
+---
+
+# Linear Algebra 
+Part I: Vectors and Matrices
+
+## Why study Linear Algebra & Linear System?
+
+::: {.incremental}
+- ### It is the magic recipe behind everything computational  
+- It is part of your everyday life! 
+    - Search Algorithms 
+    - Voice Assistants (Siri/Alexa)
+    - Image & Audio Editing Software
+    - ChatGPT & All other Deep Neural Networks   
+:::
+
+## Image Editing using Linear Algebra 
+
+```{julia}
+#| echo: false
+#| output: false 
+using Pkg, LaTeXStrings
+Pkg.activate(".")
+using Images, ImageIO, ImageMagick_jll, LinearAlgebra, Plots 
+utd = joinpath(pwd(),"utd.jpeg") 
+utdimg = load(utd)
+default(fontfamily="Helvetica",
+        titlelocation=:center, 
+        framestyle=:box,
+        linewidth=1.5, background_color=:white,
+        palette = :seaborn_bright, grid=false)
+```
+
+
+```{julia}
+#| eval: false
+#| echo: true
+using Images, ImageIO, ImageMagick
+utd = joinpath(pwd(),"utd.jpeg") 
+utdimg = load(utd)
+utdimg
+``` 
+
+```{julia}
+utdimg
+``` 
+## Image Editing using Linear Algebra 
+::: {style="font-size: 0.55em"}
+```{julia}
+#| echo: true
+Float64.(Gray.(utdimg))
+``` 
+:::
+
+## Image Editing using Linear Algebra 
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg)
+``` 
+:::
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg) .+ 0.5
+``` 
+:::
+::::
+
+## Image Editing using Linear Algebra 
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg)
+``` 
+:::
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg) .- 0.5
+``` 
+:::
+::::
+
+## Image Editing using Linear Algebra 
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg)
+``` 
+:::
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg) .* 0.5
+``` 
+:::
+::::
+
+
+## Image Editing using Linear Algebra 
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg)
+``` 
+:::
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+Gray.(utdimg)[1:5:end,1:5:end] 
+``` 
+:::
+::::
+
+## Building Blocks of Linear Algebra {.smaller .scrollable}
+::: {style="font-size: 0.82em"}
+- Scalars, *c*
+    - denoted by italics lowercase character   
+    - 0D Array 
+
+```{julia}
+#| echo: true
+c = 2 
+``` 
+
+- Vectors, $\mathbf{x}= [ x_1, x_2, x_3]$
+    - denoted by boldface lowercase character
+        - elements of a vector are denoted by lower case characters with subscripts
+        - subscripts denote the position of the elements in the vector
+    - 1D Array 
+```{julia}
+#| echo: true
+# Column Vector 
+x = [1,2,3] 
+``` 
+ 
+```{julia}
+#| echo: true
+# Row Vector 
+x = [1 2 3] 
+```
+:::
+
+## Building Blocks of Linear Algebra {.smaller .scrollable}
+
+::: {style="font-size: 0.98em"}
+- Matrices, 
+$$\mathbf{A} = \begin{bmatrix} 
+	a_{11} & a_{12} & c_{13} \\
+	a_{21} & a_{22} & a_{23}\\
+	\end{bmatrix}$$
+
+    - denoted by uppercase boldface character
+        - elements of a matrix are denoted by lowercase character with subscripts 
+        - subscript denotes the row number and column number of the element  
+  
+    - 2D Array 
+```{julia}
+#| echo: true
+A = [21 12 99;
+    11 43 51] 
+```
+
+- Tensors, 
+
+    - N dimensional Array, where $N > 2$
+::: 
+:::{style="text-align: center"}
+# Vectors 
+:::
+## Vectors are points in space
+
+```{julia}
+p1 = scatter([4.05],[7.05], xlims=[0,10], ylims =[0,10], arrow=2, size = (500,500),
+    label=false, color="blue",series_annotations = text([4,7], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!(p1,[0],[0],quiver=([4],[7]), color="blue")
+```
+
+
+## Vectors are points in space
+```{julia}
+scatter([4],[7], [5], xlim=[0,10],ylim=[0,10], zlim =[0,10],
+ xlab ="1st Dim", ylab = "2nd Dim", zlab="3rd Dim", grid=true, label=false, series_annotations = text([4,7,5], :right), size=(500,500))
+  quiver!([0],[0],[0],quiver=([4],[7],[5]), color="blue", arrow=true)
+```
+
+## Scalar Vector Multiplication {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+$\mathbf{x} = [4,7]$
+```{julia}
+p1
+```
+:::
+::: {.column width="50%"}
+$\mathbf{x} \times 0.2 = [4*0.2, 7*0.2] = [0.8, 1.4]$
+```{julia}
+scatter([0.85],[1.45], xlims=[0,10], ylims =[0,10],  size = (500,500),
+    label=false, color="blue",series_annotations = text([0.8,1.4], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([0.8],[1.4]), color="blue")
+```
+:::
+::::
+
+## Scalar Vector Multiplication {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+$\mathbf{x} = [4,7]$
+```{julia}
+plot(p1, xlims = [-10,10], ylims=[-10,10], framestyle=:origin)
+```
+:::
+::: {.column width="50%"}
+$\mathbf{x} \times -1 = [4* -1, 7* -1] = [-4, -7]$
+```{julia}
+scatter([-4.05],[-7.05], xlims=[-10,10], ylims =[-10,10],  size = (500,500),
+    label=false, color="blue",series_annotations = text([-4,-7], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([-4],[-7]), color="blue",framestyle=:origin)
+```
+:::
+::::
+
+## Vector Addition {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+$\mathbf{x} = [1,2]$
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+```
+:::
+::: {.column width="50%"}
+$\mathbf{y} = [3,1]$
+```{julia}
+scatter([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+```
+:::
+::::
+
+## Vector Addition {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+```
+:::
+::: {.column width="50%"}
+- $\mathbf{x} = [1,2]$
+- $\mathbf{y} = [3,1]$
+:::
+::::
+
+## Vector Addition {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+
+
+ scatter!([4.05],[3.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([4,3], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([4],[3]), color="orange", line = 2.5)
+
+quiver!([1],[2],quiver=([3],[1]), color="red", line=:dash, alpha=0.4)
+quiver!([3],[1],quiver=([1],[2]), color="blue", line=:dash, alpha=0.4)
+```
+:::
+::: {.column width="50%"}
+- $\mathbf{x} = [1,2]$
+- $\mathbf{y} = [3,1]$
+- $\mathbf{x} + \mathbf{y} = \\ [1,2] + [3,1] = \\  [1+3, 2+1] = \\ [4,3]$
+
+- In Julia:
+```{julia}
+#| echo: true
+x =[1,2]
+y = [3,1]
+x+y
+```
+:::
+::::
+
+## Vector Multiplication {.smaller}
+
+There are several ways to multiply two vectors:
+
+- Dot Product (Inner Product), $\qquad \mathbf{a} \cdot \mathbf{b}$
+- Outer Product $\qquad \qquad \quad \mathbf{a} \otimes \mathbf{b}$
+- Cross Product $\quad \quad \quad  \qquad \mathbf{a} \times \mathbf{b}$
+- Hadamard Product $\quad \quad \quad \mathbf{a} \odot \mathbf{b}$
+- Kronecker Product $\quad \quad \quad \mathbf{a} \otimes \mathbf{b}$
+
+*Note: These are not the same! Each method gives you a different output.*
+
+## Vector Dot Product {.smaller}
+::: {.center-xy-eq}
+
+$$
+\mathbf{a} \cdot \mathbf{b} = \begin{bmatrix}  a_{1} \\ \vdots \\ a_{n}  \end{bmatrix}
+\boldsymbol{\bullet}
+ \begin{bmatrix} b_{1} \\ \vdots \\ b_{n} \end{bmatrix}
+= \sum_{i=1}^{n} a_i b_i
+$$
+:::
+
+## Vector Dot Product {.smaller}
+Consider two vectors, 
+$\mathbf{v} =  \begin{bmatrix} 3 \\ -1 \\ 2  \end{bmatrix}$, $\mathbf{w} =  \begin{bmatrix} 1 \\ 2 \\ 1  \end{bmatrix}$
+
+$$
+\mathbf{v} \cdot \mathbf{w} = (3 \times 1) + (-1 \times 2) + (2 \times 1) \\ 
+= 3
+$$
+
+```{julia}
+#| echo: true
+using LinearAlgebra
+v = [3 -1 2]
+w = [1 2 1]
+dot(v,w)
+```
+
+Alternatively, 
+```{julia}
+#| echo: true
+v * w'
+```
+
+## Vector Magnitude {.smaller}
+
+- Squareroot of the inner product of a vector with itself gives the magnitude of that vector 
+
+```{julia}
+p1 = scatter([3.05],[4.05], xlims=[0,10], ylims =[0,10], arrow=2, size = (500,500),
+    label=false, color="blue",series_annotations = text([3,4], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!(p1,[0],[0],quiver=([3],[4]), color="blue")
+ annotate!(p1, 1.05,2.5, Plots.text(L"\sqrt{\mathbf{v} \cdot \mathbf{v}}", rotation=53))
+ #quiver!(p1,[3],[0],quiver=([0],[4]), color="blue", arrow=:line)
+ plot!(p1,[3,3],[0,4], color="black",linewidth = 3, label=false)
+  plot!(p1,[3,0],[0,0], color = "black", linewidth = 5, label=false)
+annotate!(p1, 3.25,2.0, Plots.text("4"))
+annotate!(p1, 1.5,0.50, Plots.text("3"),)
+```
+## Distance between vectors {.smaller}
+
+##### L1 Norm / Manhattan Distance 
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+ quiver!([1.05],[2.05],quiver=([2],[-1]), color="green", alpha=0.5)
+ annotate!( 2.1,1.8, Plots.text(L"|u-v|_1", rotation=-28))
+```
+:::
+:::{.column width="50%"}
+- $|\mathbf{u} -\mathbf{v}|_1 = \\ |3-1| + |1-2| = \\ |2| + |-1| \\ = 3$
+
+```{julia}
+#| echo: true
+using LinearAlgebra
+u = [1,2]
+v = [3,1]
+norm(u-v,1)
+```
+:::
+::::
+
+## Distance between vectors {.smaller}
+
+##### L2 Norm / Euclidean Distance 
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+ quiver!([1.05],[2.05],quiver=([2],[-1]), color="green", alpha=0.5)
+ annotate!( 2.1,1.8, Plots.text(L"|u-v|_2", rotation=-28))
+```
+:::
+:::{.column width="50%"}
+- $|\mathbf{u} -\mathbf{v}|_2 = \\ \sqrt{(3-1)^2 + (1-2)^2} = \\ \sqrt{(2)^2 + (-1)^2} =\\ \sqrt{4+1} = \sqrt{5} = 2.2361$
+
+```{julia}
+#| echo: true
+using LinearAlgebra
+u = [1,2]
+v = [3,1]
+norm(u-v,2)
+```
+:::
+::::
+
+
+## Distance between vectors {.smaller}
+
+##### Angular Separation  
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([3.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([3,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([3],[1]), color="red")
+```
+:::
+:::{.column width="50%"}
+- $$\cos \theta = \frac{\mathbf{u} \cdot \mathbf{v}}{||\mathbf{u}|| ||\mathbf{v}||} = $$
+$\frac{(1 \times 3) + (2 \times 1)}{\sqrt{(1)^1+(2)^2} \times \sqrt{(3)^2+(1)^2}} =  \frac{1}{\sqrt{2}}$
+
+- $\theta = \cos^{-1} (\frac{1}{\sqrt{2}}) = \\ 45^{\circ}$ 
+```{julia}
+#| echo: true
+using LinearAlgebra
+u = [1,2]
+v = [3,1]
+unorm = norm(u,2)
+vnorm = norm(v,2)
+acosd(dot(u,v) / (unorm*vnorm))
+```
+:::
+::::
+
+## Distance between vectors {.smaller}
+
+##### Angular Separation is a similarity measure 
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([1.05],[2.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,2], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[2]), color="blue")
+
+scatter!([1.55],[3.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1.5,3], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1.5],[3]), color="red")
+```
+:::
+:::{.column width="50%"}
+```{julia}
+#| echo: true
+using LinearAlgebra
+u = [1,2]
+v = [1.5,3]
+unorm = norm(u,2)
+vnorm = norm(v,2)
+acosd(dot(u,v) / (unorm*vnorm))
+```
+:::
+::::
+
+## Linear Neuron Model 
+::::{.columns}
+:::{.column width="50%"}
+![](LNM.drawio.png)
+:::
+:::{.column width="50%"}
+- What is the output of this neuron model?
+:::
+::::
+
+:::{style="text-align: center"}
+# Matrices 
+:::
+
+## Matrix Operations 
+
+::::{.columns}
+:::{.column width="50%"}
+#### Addition
+```{julia}
+#| echo: true
+#| code-line-numbers: false
+M = [2 6;8 4]
+```
+
+```{julia}
+#| echo: true
+#| code-line-numbers: false
+N = [1 0;-1 3]
+```
+```{julia}
+#| echo: true
+#| code-line-numbers: false
+M + N
+```
+:::
+:::{.column width="50%"}
+#### Multiplication by Scalar
+```{julia}
+#| echo: true
+#| code-line-numbers: false
+3 * M
+```
+
+#### Matrix Transpose
+```{julia}
+#| echo: true
+#| code-line-numbers: false
+transpose(M)
+```
+:::
+::::
+
+## Matrix-Vector Multiplication 
+##### As Linear Transformation 
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([4.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([4,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([4],[1]), color="blue")
+```
+:::
+:::{.column width="50%"}
+- $\mathbf{u} = \begin{bmatrix}4 \\1 \end{bmatrix}$
+- Multiply $\mathbf{u}$ by $\mathbf{A} = \begin{bmatrix}1 & -3 \\1 & -1  \end{bmatrix}$
+:::
+::::
+
+## Matrix-Vector Multiplication 
+##### As Linear Transformation 
+
+::::{.columns}
+:::{.column width="50%"}
+```{julia}
+scatter([4.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([4,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([4],[1]), color="blue")
+```
+:::
+:::{.column width="50%"}
+```{julia}
+scatter([4.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),alpha=0.2,
+    label=false, color="blue",series_annotations = text([4,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([4],[1]), color="blue", alpha=0.2)
+
+ scatter!([1.05],[3.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,3], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[3]), color="blue")
+  annotate!( 0.65,1.55, Plots.text("Transformed Vector", rotation=71))
+```
+:::
+::::
+
+## Matrix-Vector Multiplication 
+##### As Linear Transformation 
+
+::::{.columns}
+:::{.column width="50%"}
+$\begin{bmatrix}1 & -3 \\1 & -1  \end{bmatrix} \begin{bmatrix} 4 \\ 1 \end{bmatrix} =$
+$$ 4 \begin{bmatrix} 1 \\ 1 \end{bmatrix} + 1 \begin{bmatrix} -3 \\ - 1\end{bmatrix} =$$
+
+$$\begin{bmatrix} 1 \\ 3 \end{bmatrix}$$
+
+:::
+:::{.column width="50%"}
+```{julia}
+scatter([4.05],[1.05], xlims=[0,5], ylims =[0,5],  size = (500,500),alpha=0.2,
+    label=false, color="blue",series_annotations = text([4,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([4],[1]), color="blue", alpha=0.2)
+
+ scatter!([1.05],[3.05], xlims=[0,5], ylims =[0,5],  size = (500,500),
+    label=false, color="blue",series_annotations = text([1,3], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+ quiver!([0],[0],quiver=([1],[3]), color="blue")
+  annotate!( 0.65,1.55, Plots.text("Transformed Vector", rotation=71))
+```
+:::
+::::
+
+## Matrix-Vector Multiplication {.smaller}
+
+::: {style="font-size: 0.42em"}
+##### As Linear Transformation (Coordinate Transformation)
+
+```{julia}
+scatter([4.05],[1.05], xlims=[-2,10], ylims =[-2,10],  size = (500,500),alpha=0.5, framestyle = :none,
+    label=false, color="blue",series_annotations = text([4,1], :bottom), xlab ="1st Dim", ylab = "2nd Dim")
+#quiver!([0],[0],quiver=([4],[1]), color="blue", framestyle=:none)
+
+plot!([0,0],[0,7], label=false, linewidth=2, color="black")
+plot!([0,7],[0,0], label=false, linewidth=2, color="black")
+
+plot!([1,0],[-0.5,7.5], label=false, linewidth=2, color="blue")
+plot!([1,11],[-0.5,0.5], label=false, linewidth=2, color="blue")
+```
+-  blue represents the transformed coordinates 
+:::
+
+
+## Matrix-Vector Multiplication {.smaller}
+
+What is the value of $\mathbf{u}$? 
+$$\mathbf{u} = \begin{bmatrix} 3 & 4 & 5 \\ 1 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} 1 \\ 0 \\ 2\end{bmatrix}$$
+
+## Matrix-Vector Multiplication {.smaller}
+What is the value of $\mathbf{u}$? 
+$$\mathbf{u} = \begin{bmatrix} 3 & 4 & 5 \\ 1 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} 1 \\ 0 \\ 2\end{bmatrix}$$
+
+$= 1 \begin{bmatrix} 3 \\ 1 \end{bmatrix} + 0 \begin{bmatrix} 4 \\ 0 \end{bmatrix} + 2 \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
+
+$= \begin{bmatrix} 13 \\ 3 \end{bmatrix}$
+
+```{julia}
+#| echo: true
+w = [3 4 5; 1 0 1]
+v= [1,0,2]
+w*v
+```
+
+## Connection Weight Matrix 
+
+::::{.columns}
+:::{.column width="50%"}
+![](wMatrix.drawio.png)
+:::
+:::{.column width="50%"}
+$$
+\begin{bmatrix}
+w_{11} & w_{12} & w_{13} & w_{14} \\ 
+w_{21} & w_{22} & w_{23} & w_{24}\\
+w_{31} & w_{32} & w_{33} & w_{34}\\
+\end{bmatrix}
+$$
+
+$$
+\mathbf{r} = \mathbf{W} \mathbf{x}
+$$
+:::
+::::
+
+
+## Connection Weight Matrix 
+
+::::{.columns}
+:::{.column width="50%"}
+![](wMatrix2.drawio.png)
+:::
+:::{.column width="50%"}
+$$
+\begin{bmatrix}
+w_{11} & w_{12} & w_{13} & 0 \\ 
+0 & 0 & 0 & w_{24}\\
+0 & 0 & w_{33} & w_{34}\\
+\end{bmatrix}
+$$
+
+$$
+\mathbf{r} = \mathbf{W} \mathbf{x}
+$$
+:::
+::::
+
+## Connection Weight Matrix 
+
+::::{.columns}
+:::{.column width="50%"}
+![](wMatrix3.drawio.png)
+:::
+:::{.column width="50%"}
+$$
+\begin{bmatrix}
+w_{11} & w_{12} & w_{13} & 0 \\ 
+0 & 0 & 0 & w_{24}\\
+0 & 0 & w_{33} & w_{34}\\
+\end{bmatrix}
+$$
+
+$$
+\mathbf{r} = \mathbf{W} \mathbf{x}
+$$
+
+$$
+\mathbf{y} = \mathbf{H} \mathbf{r}
+$$
+:::
+::::
+
+## Matrix-Matrix Multiplication {.smaller}
+::: {style="font-size: 0.76em"}
+$\begin{bmatrix} 1 & 2 \\ 3 & 1 \\ 1 & -1 \\ \end{bmatrix} \begin{bmatrix} 3 & 1 \\ 1 & 2 \\ \end{bmatrix} =$
+
+$$\begin{bmatrix} \begin{bmatrix} 1 & 2 \end{bmatrix} \cdot \begin{bmatrix} 3 \\ 1\end{bmatrix} &
+ \begin{bmatrix} 1 & 2 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2\end{bmatrix} \\
+ \begin{bmatrix} 3 & 1 \end{bmatrix} \cdot \begin{bmatrix} 3 \\ 1\end{bmatrix} &
+ \begin{bmatrix} 3 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2\end{bmatrix} \\
+  \begin{bmatrix} 1 & -1 \end{bmatrix} \cdot \begin{bmatrix} 3 \\ 1\end{bmatrix} &
+ \begin{bmatrix} 1 & -1 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2\end{bmatrix} \\
+\end{bmatrix} = $$
+
+$$\begin{bmatrix} 5 & 5 \\ 10 & 5 \\ 2 & - 1 \end{bmatrix}$$
+
+```{julia}
+#| echo: true
+A = [1 2; 3 1;1 -1]
+B = [3 1; 1 2]
+A * B
+```
+:::

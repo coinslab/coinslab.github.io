@@ -79,7 +79,7 @@ Train you with the necessary tools and skills you need to complete your modeling
 - Less verbose (compared to R & Python)
 - Best-in-class interoperability (with R, Python & C)
 - Really fast when implementing computationally complex algorithms
-- Good software engineering principles instantiated in the language design 
+- Good software engineering principles instantiated in the language design  
 - Used widely in High Performance Scientific Computing 
 
 

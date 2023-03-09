@@ -1,0 +1,247 @@
+---
+title: ""
+controls: true
+controls-layout: bottom-right
+format: 
+    revealjs:
+        theme: simple
+        history: false
+        highlight-style: github
+        chalkboard: true
+        scrollable: true
+        include-in-header: 
+            text: |
+                <style>
+                    .center-xy-eq {
+                    margin: 0;
+                    position: absolute;
+                    top: 30%;
+                    left: 30%;
+                    -ms-transform: translateY(-50%), translateX(-50%);
+                    transform: translateY(-50%), translateX(-50%);}
+                </style>
+execute:
+  freeze: true
+  daemon: 600000
+jupyter: julia-1.8
+---
+
+# Linear Algebra 
+Part II: Representation and Applications 
+
+## Recall: Images are Matrices 
+
+![](ImageMatrix.drawio.png)
+
+```{julia}
+#| echo: false
+#| output: false 
+using Pkg, LaTeXStrings
+Pkg.activate(".")
+using Images, ImageIO, ImageMagick_jll, LinearAlgebra, Plots 
+utd = joinpath(pwd(),"utd.jpeg") 
+utdimg = load(utd)
+default(fontfamily="Helvetica",
+        titlelocation=:center, 
+        framestyle=:box,
+        linewidth=1.5, background_color=:white,
+        palette = :seaborn_bright, grid=false)
+```
+
+## Recall: Images are Matrices 
+::::{.columns}
+::: {.column width="50%"}
+```{julia}
+utdimg
+```
+```{julia}
+size(utdimg)
+```
+:::
+
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+utdimg[5,5]
+```
+
+
+```{julia}
+#| echo: true
+utdimg[105,305]
+```
+
+```{julia}
+#| echo: true
+utdimg[334,500]
+```
+:::
+::::
+
+## Recall: Images are Matrices {.smaller}
+
+::::{.columns}
+::: {.column width="33%"}
+```{julia}
+m,n = size(utdimg); 
+```
+```{julia}
+#| echo: true
+#| code-overflow: wrap
+#| fig-width: 1
+r = RGB.(red.(utdimg), zeros(m,n), zeros(m,n))
+```
+:::
+::: {.column width="33%"}
+```{julia}
+#| echo: true
+#| code-overflow: wrap
+g = RGB.(zeros(m,n), green.(utdimg), zeros(m,n))
+```
+:::
+::: {.column width="33%"}
+```{julia}
+#| echo: true
+#| code-overflow: wrap
+b = RGB.(zeros(m,n), zeros(m,n), blue.(utdimg))
+```
+:::
+::::
+
+::::{.columns}
+::: {.column width="33%"}
+:::
+::: {.column width="33%"}
+```{julia}
+#| echo: true
+#| code-overflow: wrap
+r .+ b .+ g
+```
+:::
+::: {.column width="33%"}
+
+:::
+::::
+
+## Recall: Images are Matrices 
+::::{.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+utdbnw = Gray.(utdimg)
+```
+```{julia}
+size(utdimg)
+```
+
+```{julia}
+#| echo: true
+utdbnw[100:170, 260:490]
+```
+:::
+
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+utdbnw[5,5]
+```
+
+
+```{julia}
+#| echo: true
+utdbnw[105,305]
+```
+
+```{julia}
+#| echo: true
+utdbnw[334,500]
+```
+:::
+::::
+
+## Recall: Images are Matrices 
+::::{.columns}
+::: {.column width="50%"}
+```{julia}
+#| echo: true
+utdbnw = Gray.(utdimg)
+```
+```{julia}
+size(utdimg)
+```
+:::
+::: {.column width="50%"}
+::: {style="font-size: 0.55em"}
+```{julia}
+#| echo: true
+vec(Float64.(utdbnw))
+```
+:::
+:::
+::::
+
+## Image Compression using SVD 
+
+```{julia}
+#| echo: true
+using LinearAlgebra 
+U,S,V = svd(Float64.(Gray.(utdbnw)))
+RGB.(U*diagm(S)*V')
+```
+
+## Image Compression using SVD 
+```{julia}
+#| echo: true
+function compressimg(n)
+    RGB.(U[:,1:n]*diagm(S[1:n])*V[:,1:n]')
+end
+```
+
+```{julia}
+#| echo: true
+compressimg(20)
+```
+## What's the optimal number of features ?
+```{julia}
+using GRUtils 
+SNorm = S ./norm(S)
+GRUtils.plot(1:length(S),SNorm, title="Scree Plot", 
+        xlabel = "Singular Value IDs",
+        ylabel = "Singular Values", grid=false)
+```
+
+## What's the optimal number of features ?
+
+
+::::{.columns}
+::: {.column width="50%"}
+:::{style="width: 65%;"}
+```{julia}
+#| fig-wdith: 1px
+using GRUtils 
+SNorm = S ./norm(S)
+GRUtils.plot(1:length(S),SNorm, title="Scree Plot", 
+        xlabel = "Singular Value IDs",
+        ylabel = "Singular Values", grid=false, size=(10,10))
+```
+```{julia}
+#| echo: true
+compressimg(10)
+```
+
+:::
+:::
+::: {.column width="50%"}
+:::{style="width: 65%;"}
+```{julia}
+#| echo: true
+compressimg(20)
+```
+
+```{julia}
+#| echo: true
+compressimg(30)
+```
+:::
+:::
+::::
