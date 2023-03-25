@@ -4,7 +4,7 @@
     "href": "contents.html",
     "title": "Contents",
     "section": "",
-    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra: Vectors and Matrices (03/09/2023)\n\nLinear Algebra: Application using SVD (03/09/2023)\nLinear Algebra - SVD (10/10/2022)\nCognitive Modeling Lab - Intro\n\n\n\n\n\nList of R Packages used in the Lab"
+    "text": "Note\n\n\n\nFor the past several decades, the primary languge used in the lab was MATLAB. Starting from 2021, there’s been a combined effort to use Julia for new projects in the lab - for it’s promised speed and intuitive mathematical-style language syntax. However, Julia being a new language, the ecosystem lacks any equivalent for many of the mature Psychometrics packages available in R. Also, most of PI’s previous software are written in MATLAB. Hence, for the time being we use MATLAB, R, and Julia depending on the needs of the project, but the plan is to completely move to Julia in the future.\n\n\n\nRemote Login\n\n\n\n\nGetting Started in Julia\nSetting up Julia via juliaup\n\n\n\n\n\nLinear Algebra: Vectors and Matrices (03/09/2023)\n\nLinear Algebra: Application using SVD (03/09/2023)\nLinear Algebra - SVD (10/10/2022)\nCognitive Modeling Lab - Intro\n\n\n\n\n\nList of R Packages used in the Lab"
   },
   {
     "objectID": "contents.html#books",
@@ -189,39 +189,11 @@
     "text": "Topics to cover\n\nInstalling Julia\nChange language type in a new file\nKnow your IDE\nJulia REPL Modes\nInstalling Packages\nCreating a Julia Script\nProject Environments"
   },
   {
-    "objectID": "pages/CNMLabSlides/Intro.html#a",
-    "href": "pages/CNMLabSlides/Intro.html#a",
-    "title": "",
-    "section": "A",
-    "text": "A"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#why",
-    "href": "pages/CNMLabSlides/Intro.html#why",
-    "title": "",
-    "section": "Why",
-    "text": "Why"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra",
-    "href": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra",
-    "title": "",
-    "section": "Why study Linear Algebra?",
-    "text": "Why study Linear Algebra?\n\n\nIt is the magic recipe behind everything computational\nIt is part of your everyday life! Some examples:\n\nPage Rank Algorithm (Google Search)\nVoice Assistants (Siri/Alexa)\nImage & Audio Editing Software\nChatGPT"
-  },
-  {
     "objectID": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra-linear-system",
     "href": "pages/CNMLabSlides/Intro.html#why-study-linear-algebra-linear-system",
     "title": "",
     "section": "Why study Linear Algebra & Linear System?",
     "text": "Why study Linear Algebra & Linear System?\n\n\nIt is the magic recipe behind everything computational\nIt is part of your everyday life!\n\nSearch Algorithms\nVoice Assistants (Siri/Alexa)\nImage & Audio Editing Software\nChatGPT & All other Deep Neural Networks"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#image-editing-example",
-    "href": "pages/CNMLabSlides/Intro.html#image-editing-example",
-    "title": "",
-    "section": "Image editing example",
-    "text": "Image editing example"
   },
   {
     "objectID": "pages/CNMLabSlides/Intro.html#image-editing-using-linear-algebra",
@@ -264,20 +236,6 @@
     "title": "",
     "section": "Image Editing using Linear Algebra",
     "text": "Image Editing using Linear Algebra\n\n\n\nGray.(utdimg)\n\n\n\n\n\n\nGray.(utdimg)[1:5:end,1:5:end]"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra",
-    "href": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra",
-    "title": "",
-    "section": "Building Bocks of Linear Algebra",
-    "text": "Building Bocks of Linear Algebra\n\n\nScalars, c\n\ndenoted by italics lowercase character\n\n0D\n\n\n\nc = 2 \n\n2\n\n\n\nVectors, \\(\\mathbf{x}= [ x_1, x_2, x_3]\\)\n\ndenoted by boldface lowercase character\n\nelements of a vector are denoted by lower case characters with subscripts\nsubscripts denote the position of the elements in the vector\n\n1D\n\n\n\n# Row Vector \nx = [1,2,3] \n\n3-element Vector{Int64}:\n 1\n 2\n 3\n\n\n\n# Column Vector \nx = [1 2 3] \n\n1×3 Matrix{Int64}:\n 1  2  3"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra-1",
-    "href": "pages/CNMLabSlides/Intro.html#building-bocks-of-linear-algebra-1",
-    "title": "",
-    "section": "Building Bocks of Linear Algebra",
-    "text": "Building Bocks of Linear Algebra\n\n\nMatrices, \\[\\mathbf{A} = \\begin{bmatrix}\n  a_{11} & a_{12} & c_{13} \\\\\n  a_{21} & a_{22} & a_{23}\\\\\n  \\end{bmatrix}\\]\n\ndenoted by uppercase boldface character\n\nelements of a matrix are denoted by lowercase character with subscripts\nsubscript denotes the row number and column number of the element\n\n2D\n\n\n\nA = [21 12 99;\n    11 43 51] \n\n2×3 Matrix{Int64}:\n 21  12  99\n 11  43  51\n\n\n\nTensors,\n\nN dimensional, where \\(N > 2\\)"
   },
   {
     "objectID": "pages/CNMLabSlides/Intro.html#building-blocks-of-linear-algebra",
@@ -357,20 +315,6 @@
     "text": "Vector Dot Product\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = \\begin{bmatrix}  a_{1} \\\\ \\vdots \\\\ a_{n}  \\end{bmatrix}\n\\boldsymbol{\\bullet}\n\\begin{bmatrix} b_{1} \\\\ \\vdots \\\\ b_{n} \\end{bmatrix}\n= \\sum_{i=1}^{n} a_i b_i\n\\]"
   },
   {
-    "objectID": "pages/CNMLabSlides/Intro.html#t",
-    "href": "pages/CNMLabSlides/Intro.html#t",
-    "title": "",
-    "section": "t",
-    "text": "t\nConsider two vectors, \\(\\mathbf{v} = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\), \\(\\mathbf{w} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 1 \\end{bmatrix}\\)"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#d",
-    "href": "pages/CNMLabSlides/Intro.html#d",
-    "title": "",
-    "section": "d",
-    "text": "d\n\n::: ::: {.column width=“50%”} ::::"
-  },
-  {
     "objectID": "pages/CNMLabSlides/Intro.html#vector-dot-product-1",
     "href": "pages/CNMLabSlides/Intro.html#vector-dot-product-1",
     "title": "",
@@ -385,32 +329,11 @@
     "text": "Vector Magnitude\n\nSquareroot of the inner product of a vector with itself gives the magnitude of that vector"
   },
   {
-    "objectID": "pages/CNMLabSlides/Intro.html#section",
-    "href": "pages/CNMLabSlides/Intro.html#section",
-    "title": "",
-    "section": "",
-    "text": "\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#section-1",
-    "href": "pages/CNMLabSlides/Intro.html#section-1",
-    "title": "",
-    "section": "",
-    "text": "\\(\\mathbf{x} = [1,2]\\)\n\\(\\mathbf{y} = [3,1]\\)\n\\(\\mathbf{x} + \\mathbf{y} = \\\\ [1,2] + [3,1] = \\\\ [1+3, 2+1] = \\\\ [4,3]\\)"
-  },
-  {
     "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors",
     "href": "pages/CNMLabSlides/Intro.html#distance-between-vectors",
     "title": "",
     "section": "Distance between vectors",
     "text": "Distance between vectors\nL1 Norm / Manhattan Distance\n\n\n\n\n\n\n\n\n\n\\(|\\mathbf{u} -\\mathbf{v}|_1 = \\\\ |3-1| + |1-2| = \\\\ |2| + |-1| \\\\ = 3\\)\n\n\nusing LinearAlgebra\nu = [1,2]\nv = [3,1]\nnorm(u-v,1)\n\n3.0"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#s",
-    "href": "pages/CNMLabSlides/Intro.html#s",
-    "title": "",
-    "section": "s",
-    "text": "s"
   },
   {
     "objectID": "pages/CNMLabSlides/Intro.html#distance-between-vectors-1",
@@ -441,25 +364,11 @@
     "text": "Linear Neuron Model\n\n\n\n\n\nWhat is the output of this neuron model?"
   },
   {
-    "objectID": "pages/CNMLabSlides/Intro.html#matrix-operation",
-    "href": "pages/CNMLabSlides/Intro.html#matrix-operation",
-    "title": "",
-    "section": "Matrix Operation",
-    "text": "Matrix Operation\n\n\nAddition\n\nM = [2 6;8 4]\n\n2×2 Matrix{Int64}:\n 2  6\n 8  4\n\n\n\nN = [1 0;-1 3]\n\n2×2 Matrix{Int64}:\n  1  0\n -1  3\n\n\n\nM + N\n\n2×2 Matrix{Int64}:\n 3  6\n 7  7\n\n\n\nMultiplication by Scalar\n\n3 * M\n\n2×2 Matrix{Int64}:\n  6  18\n 24  12\n\n\nMatrix Transpose\n\ntranspose(M)\n\n2×2 transpose(::Matrix{Int64}) with eltype Int64:\n 2  8\n 6  4"
-  },
-  {
     "objectID": "pages/CNMLabSlides/Intro.html#matrix-operations",
     "href": "pages/CNMLabSlides/Intro.html#matrix-operations",
     "title": "",
     "section": "Matrix Operations",
     "text": "Matrix Operations\n\n\nAddition\n\nM = [2 6;8 4]\n\n2×2 Matrix{Int64}:\n 2  6\n 8  4\n\n\n\nN = [1 0;-1 3]\n\n2×2 Matrix{Int64}:\n  1  0\n -1  3\n\n\n\nM + N\n\n2×2 Matrix{Int64}:\n 3  6\n 7  7\n\n\n\nMultiplication by Scalar\n\n3 * M\n\n2×2 Matrix{Int64}:\n  6  18\n 24  12\n\n\nMatrix Transpose\n\ntranspose(M)\n\n2×2 transpose(::Matrix{Int64}) with eltype Int64:\n 2  8\n 6  4"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/Intro.html#l-d",
-    "href": "pages/CNMLabSlides/Intro.html#l-d",
-    "title": "",
-    "section": "l d",
-    "text": "l d"
   },
   {
     "objectID": "pages/CNMLabSlides/Intro.html#matrix-vector-multiplication",
@@ -532,46 +441,39 @@
     "text": "Matrix-Matrix Multiplication\n\n\\(\\begin{bmatrix} 1 & 2 \\\\ 3 & 1 \\\\ 1 & -1 \\\\ \\end{bmatrix} \\begin{bmatrix} 3 & 1 \\\\ 1 & 2 \\\\ \\end{bmatrix} =\\)\n\\[\\begin{bmatrix} \\begin{bmatrix} 1 & 2 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 1 & 2 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n\\begin{bmatrix} 3 & 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 3 & 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n  \\begin{bmatrix} 1 & -1 \\end{bmatrix} \\cdot \\begin{bmatrix} 3 \\\\ 1\\end{bmatrix} &\n\\begin{bmatrix} 1 & -1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 2\\end{bmatrix} \\\\\n\\end{bmatrix} = \\]\n\\[\\begin{bmatrix} 5 & 5 \\\\ 10 & 5 \\\\ 2 & - 1 \\end{bmatrix}\\]\n\nA = [1 2; 3 1;1 -1]\nB = [3 1; 1 2]\nA * B\n\n3×2 Matrix{Int64}:\n  5   5\n 10   5\n  2  -1"
   },
   {
-    "objectID": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication-1",
-    "href": "pages/CNMLabSlides/Intro.html#matrix-matrix-multiplication-1",
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#representation-images",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#representation-images",
     "title": "",
-    "section": "Matrix-Matrix Multiplication",
-    "text": "Matrix-Matrix Multiplication\n\nA = [1 2; 3 1;1 -1]\nB = [3 1; 1 2]\nA * B\n\n3×2 Matrix{Int64}:\n  5   5\n 10   5\n  2  -1"
+    "section": "Representation: Images",
+    "text": "Representation: Images"
   },
   {
-    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices",
-    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices",
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-1",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-1",
     "title": "",
-    "section": "Recall: Images are Matrices",
-    "text": "Recall: Images are Matrices"
+    "section": "Representation: Images",
+    "text": "Representation: Images\n\n\n\n\n\n\n\n\n\n(334, 500)\n\n\n\n\nutdimg[5,5]\n\n\n\n\n\nutdimg[105,305]\n\n\n\n\n\nutdimg[334,500]"
   },
   {
-    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-1",
-    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-1",
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-2",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-2",
     "title": "",
-    "section": "Recall: Images are Matrices",
-    "text": "Recall: Images are Matrices\n\n\n\n\n\n\n\n\n\n(334, 500)\n\n\n\n\nutdimg[5,5]\n\n\n\n\n\nutdimg[105,305]\n\n\n\n\n\nutdimg[334,500]"
+    "section": "Representation: Images",
+    "text": "Representation: Images\n\n\n\nr = RGB.(red.(utdimg), zeros(m,n), zeros(m,n))\n\n\n\n\n\n\ng = RGB.(zeros(m,n), green.(utdimg), zeros(m,n))\n\n\n\n\n\n\nb = RGB.(zeros(m,n), zeros(m,n), blue.(utdimg))\n\n\n\n\n\n\n\n\n\n\n\nr .+ b .+ g"
   },
   {
-    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-2",
-    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-2",
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-3",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-3",
     "title": "",
-    "section": "Recall: Images are Matrices",
-    "text": "Recall: Images are Matrices\n\n\n\nr = RGB.(red.(utdimg), zeros(m,n), zeros(m,n))\n\n\n\n\n\n\ng = RGB.(zeros(m,n), green.(utdimg), zeros(m,n))\n\n\n\n\n\n\nb = RGB.(zeros(m,n), zeros(m,n), blue.(utdimg))\n\n\n\n\n\n\n\n\n\n\n\nr .+ b .+ g"
+    "section": "Representation: Images",
+    "text": "Representation: Images\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\nutdbnw[100:170, 260:490]\n\n\n\n\n\n\nutdbnw[5,5]\n\n\n\n\n\nutdbnw[105,305]\n\n\n\n\n\nutdbnw[334,500]"
   },
   {
-    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-3",
-    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-3",
+    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-4",
+    "href": "pages/CNMLabSlides/EigenAnalysis.html#representation-images-4",
     "title": "",
-    "section": "Recall: Images are Matrices",
-    "text": "Recall: Images are Matrices\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\nutdbnw[100:170, 260:490]\n\n\n\n\n\n\nutdbnw[5,5]\n\n\n\n\n\nutdbnw[105,305]\n\n\n\n\n\nutdbnw[334,500]"
-  },
-  {
-    "objectID": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-4",
-    "href": "pages/CNMLabSlides/EigenAnalysis.html#recall-images-are-matrices-4",
-    "title": "",
-    "section": "Recall: Images are Matrices",
-    "text": "Recall: Images are Matrices\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\n\n\nvec(Float64.(utdbnw))\n\n167000-element Vector{Float64}:\n 0.49019607843137253\n 0.49019607843137253\n 0.49411764705882355\n 0.4980392156862745\n 0.5019607843137255\n 0.5058823529411764\n 0.5098039215686274\n 0.5098039215686274\n 0.5137254901960784\n 0.5176470588235295\n 0.5215686274509804\n 0.5254901960784314\n 0.5294117647058824\n ⋮\n 0.24313725490196078\n 0.47843137254901963\n 0.20392156862745098\n 0.27450980392156865\n 0.16470588235294117\n 0.09411764705882353\n 0.03529411764705882\n 0.00392156862745098\n 0.10588235294117647\n 0.5411764705882353\n 0.3215686274509804\n 0.47058823529411764"
+    "section": "Representation: Images",
+    "text": "Representation: Images\n\n\n\nutdbnw = Gray.(utdimg)\n\n\n\n\n\n\n(334, 500)\n\n\n\n\n\nvec(Float64.(utdbnw))\n\n167000-element Vector{Float64}:\n 0.49019607843137253\n 0.49019607843137253\n 0.49411764705882355\n 0.4980392156862745\n 0.5019607843137255\n 0.5058823529411764\n 0.5098039215686274\n 0.5098039215686274\n 0.5137254901960784\n 0.5176470588235295\n 0.5215686274509804\n 0.5254901960784314\n 0.5294117647058824\n ⋮\n 0.24313725490196078\n 0.47843137254901963\n 0.20392156862745098\n 0.27450980392156865\n 0.16470588235294117\n 0.09411764705882353\n 0.03529411764705882\n 0.00392156862745098\n 0.10588235294117647\n 0.5411764705882353\n 0.3215686274509804\n 0.47058823529411764"
   },
   {
     "objectID": "pages/CNMLabSlides/EigenAnalysis.html#image-compression-using-svd",
@@ -602,10 +504,10 @@
     "text": "What’s the optimal number of features ?\n\n\n\n\n\n\n\n\n\ncompressimg(10)\n\n\n\n\n\n\n\n\ncompressimg(20)\n\n\n\n\n\ncompressimg(30)"
   },
   {
-    "objectID": "pages/CNMLabSlides/Lab1/lab1.html",
-    "href": "pages/CNMLabSlides/Lab1/lab1.html",
-    "title": "Lab 1: Hello Julia! ",
+    "objectID": "pages/ssh-login.html",
+    "href": "pages/ssh-login.html",
+    "title": "How to remote login to the lab computer",
     "section": "",
-    "text": "Train you with the necessary tools and skills you need to complete your modeling project\n\n\n\nIdentify an engineering or scientific problem in Artificial Intelligence, Psychology, or Cognitive Neuroscience.\nIdentify & assess the quality of the data required to empirically investigate the problem.\nDevelop a 1 page project proposal abstract.\nUse the machine learning skills acquired through the lab and theory to investigate the problem.\n\nRecode the data using unsupervised learning (if necessary).\nImplement a simple logistic regression model, shallow neural network, and a deep neural network model.\nEvaluate the performance of your model (Confusion Matrix).\nDo 2-fold cross-validation.\nCompare the results of competing models.\n\nPresent the results of your study as a 15-minute talk.\nWrite and submit a ~10 page project report in APA Journal Article format.\n\n\n\n\n\nYou fill out a project interest survey\n\nArtificial Intelligence Project Examples:\n\nEmail Spam Filter, Speech Recognition System, Twitter Hate Speech Detection\n\nPsychology Project Examples:\n\nHuman Emotion Classification using Eye-Feature, Psychopathy Diagnosis\n\nCognitive Neuroscience Project Examples:\n\nAlzheimer’s detection using fMRI, Analysis and Modeling of Neural Ensemble Rehearsal During Sleep, Tumor detection using MRI, Autism diagnosis using fMRI\n\n\nYou form groups by yourself or we help you find project groups\n\n\n\n\n\n\n\nKaggle: For all sorts of datasets.\nUCI Machine Learning Repository: For all sorts of datasets.\nUCLA Library: For Psychological datasets.\nCMU Datashop: For Educational & Psychological datasets.\nOpenNeuro: For Neuroscience datasets.\nCRCNS: For Neuroscience datasets.\nRDatasets: A collection of common datasets used in all Statistical/Machine Learning textbooks.\nGoogle Dataset Search\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source (Free to Use, No license required to do commercial project in Julia)\nLess verbose (compared to R & Python)\nBest-in-class interoperability (with R, Python & C)\nReally fast when implementing computationally complex algorithms\nGood software engineering principles instantiated in the language design\nUsed widely in High Performance Scientific Computing\n\n\n\n\nRelatively young community –> fewer packages compared to R or Python (RCall.jl & PythonCall.jl to the rescue)\nPackage installation can take some time (continually improving with each update)\n\n\n\n\n\n\nInstalling Julia\nChange language type in a new file\nKnow your IDE\nJulia REPL Modes\nInstalling Packages\nCreating a Julia Script\nProject Environments"
+    "text": "Note:You need Visual Studio Code for this setup. Make sure you have installed VS Code in your machine.\n\nStep 1: Request PI for access to lab computer.\nOnce your ID is approved you’ll get your host ID. Your host ID will be something like your_netid@remotePC_IPaddress.\nStep 2: Install the Remote SSH VS Code extension.\n\nIf you are new to VS Code you can learn more about how to install extensions here.\n\nStep 3: Adding remote Host\nPress Cmd + Shift + P (for Mac) or Ctrl + Shift + P (for windows) to pull up the command palette. In the command palette start typing SSH.\n\n\nFrom the list, choose Remote-SSH:Add New SSH Host…\n\nStep 4: Enter Host ID\nStep 3 will generate the following window: \n\nEnter the host ID you got from Step 1 in the above empty field. This will prompt you to choose a directory for saving the configuration file. You can choose the default options you see from the list. Once adding the remote host is complete, you’ll see the following message towards the bottom right corner of your VS Code window.\n\n\nStep 5: Connect to remote computer\nPress Cmd + Shift + P (for Mac) or Ctrl + Shift + P (for windows) to pull up the command palette. In the command palette start typing SSH.\n\n\nFrom the list, choose Remote-SSH:Connect to Host…. This will show you a list of Hosts to choose from. The host will be listed by their IP address.\nOnce you choose the host IP address, a new VS Code window will pop with with the command palette asking for you to enter the password. Here you enter your netid password. Once the connection is established you’ll see the left corner of your vs-code with your host IP address in blue color.\n\nStep 6: Get the Command Line Interface\nPress Cmd + Shift + P (for Mac) or Ctrl + Shift + P (for windows) to pull up the command palette. In the command palette start create new terminal.\n\n\n\nStep 7: Install your language specific VS Code Extensions\nTo use your programming language of choice. You’ll need to install the language specific VS Code extensions in the remote machine. To do so, you go to the extensions window and find the extension you want to install. In the options, you’ll see “Install in SSH”."
   }
 ]

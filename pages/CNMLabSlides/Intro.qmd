@@ -45,9 +45,9 @@ Part I: Vectors and Matrices
 ```{julia}
 #| echo: false
 #| output: false 
-using Pkg, LaTeXStrings
+using Pkg
 Pkg.activate(".")
-using Images, ImageIO, ImageMagick_jll, LinearAlgebra, Plots 
+using Images, ImageIO, ImageMagick_jll, LinearAlgebra, Plots, LaTeXStrings
 utd = joinpath(pwd(),"utd.jpeg") 
 utdimg = load(utd)
 default(fontfamily="Helvetica",

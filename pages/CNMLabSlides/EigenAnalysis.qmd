@@ -29,14 +29,14 @@ jupyter: julia-1.8
 # Linear Algebra 
 Part II: Representation and Applications 
 
-## Recall: Images are Matrices 
+## Representation: Images 
 
 ![](ImageMatrix.drawio.png)
 
 ```{julia}
 #| echo: false
 #| output: false 
-using Pkg, LaTeXStrings
+using Pkg
 Pkg.activate(".")
 using Images, ImageIO, ImageMagick_jll, LinearAlgebra, Plots 
 utd = joinpath(pwd(),"utd.jpeg") 
@@ -46,9 +46,10 @@ default(fontfamily="Helvetica",
         framestyle=:box,
         linewidth=1.5, background_color=:white,
         palette = :seaborn_bright, grid=false)
+include("AudioDisplay.jl")
 ```
 
-## Recall: Images are Matrices 
+## Representation: Images  
 ::::{.columns}
 ::: {.column width="50%"}
 ```{julia}
@@ -78,7 +79,7 @@ utdimg[334,500]
 :::
 ::::
 
-## Recall: Images are Matrices {.smaller}
+## Representation: Images {.smaller}
 
 ::::{.columns}
 ::: {.column width="33%"}
@@ -107,7 +108,7 @@ b = RGB.(zeros(m,n), zeros(m,n), blue.(utdimg))
 ```
 :::
 ::::
-
+ 
 ::::{.columns}
 ::: {.column width="33%"}
 :::
@@ -123,7 +124,7 @@ r .+ b .+ g
 :::
 ::::
 
-## Recall: Images are Matrices 
+## Representation: Images
 ::::{.columns}
 ::: {.column width="50%"}
 ```{julia}
@@ -159,7 +160,7 @@ utdbnw[334,500]
 :::
 ::::
 
-## Recall: Images are Matrices 
+## Representation: Images
 ::::{.columns}
 ::: {.column width="50%"}
 ```{julia}
